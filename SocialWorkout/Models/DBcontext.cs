@@ -33,6 +33,16 @@ namespace SocialWorkout.Models
                 return Countries;
             }
         }
+
+        public MongoCollection<User> Users
+        {
+            get
+            {
+                var Countries = Database.GetCollection<Country>("Users");
+
+                return Users;
+            }
+        }
     }
 
 }
