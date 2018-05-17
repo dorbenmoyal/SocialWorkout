@@ -38,7 +38,7 @@ namespace SocialWorkout.Models
         {
             get
             {
-                var Countries = Database.GetCollection<Country>("Users");
+                var Users = Database.GetCollection<User>("Users");
 
                 return Users;
             }
