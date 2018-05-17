@@ -24,7 +24,7 @@ namespace SocialWorkout.Models
             Database = server.GetDatabase(DataBaseName);
         }
 
-        public MongoCollection<Country> Countries
+        public MongoCollection<Country> Countriess
         {
             get
             {
