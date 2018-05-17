@@ -15,7 +15,7 @@ namespace SocialWorkout.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your applicdation description page.";
 
             return View();
         }
