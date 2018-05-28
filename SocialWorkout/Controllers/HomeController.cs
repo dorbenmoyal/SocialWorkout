@@ -20,6 +20,10 @@ namespace SocialWorkout.Controllers
             return View();
 
         }
+        public ActionResult Home()
+        {
+            return View();
+        }
         [HttpPost]
         public ActionResult Create(Country _Country)
         {

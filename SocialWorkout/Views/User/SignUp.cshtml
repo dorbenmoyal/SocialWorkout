@@ -1,0 +1,166 @@
+﻿@model SocialWorkout.Models.User
+
+
+
+@{
+	Layout = null;
+}
+@Scripts.Render("~/bundles/jquery")
+
+<head>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="~/Content/LogIn/LogIn.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+	<script src="~/Scripts/angular.min.js"></script>
+	<script src="~/Scripts/angular.js"></script>
+	<style>
+
+		:root {
+			--loginLabelBackgroundColor: #2c3338;
+		}
+	</style>
+
+</head>
+
+
+
+<center style=" font-size: 33px;color: white;">Sign Up</center>
+
+
+<body class="align" ng-app>
+
+	<div class="grid">
+
+		@using (Html.BeginForm("Create", "User",
+			new { ReturnUrl = ViewBag.ReturnUrl },
+			FormMethod.Post, new { @class = "form login" }))
+		{
+			<form class="form login">
+
+				<div class="form__field">
+
+					<label><i class="material-icons">email</i></label>
+					<input type="text" name="email" class="form__input" placeholder="Email" required>
+				</div>
+
+				<div class="form__field">
+					<label><i class="material-icons">https</i></label>
+					<input type="password" name="password" class="form__input" placeholder="Password" required>
+				</div>
+
+				<div class="form__field">
+					<label><i class="material-icons">perm_identity</i></label>
+					<input type="text" name="FirstName" class="form__input" placeholder="First Name" required>
+				</div>
+
+				<div class="form__field">
+					<label><i class="material-icons">perm_identity</i></label>
+					<input type="text" name="LastName" class="form__input" placeholder="Last Name" required>
+				</div>
+
+				<div class="form__field">
+					<label><i class="material-icons">face</i></label>
+					<input type="text" name="Age" class="form__input" placeholder="Age" required>
+				</div>
+
+				<div class="form__field">
+					<label><i class="material-icons">location_on</i></label>
+					<input type="text" name="Country" class="form__input" placeholder="Country" required>
+				</div>
+
+				<div class="form__field">
+					<label><i class="material-icons">accessibility</i></label>
+					<p style="padding-left:8px" type="text" name="Gender" class="form__input">Gender</p>
+
+					<label class="radio-inline"><input type="radio" name="Gender" value="Male">Male</label>
+					<label class="radio-inline"><input type="radio" name="Gender" value="Female">Female</label>
+				</div>
+
+				<!--<div class="form__field">
+					<label><i class="material-icons">favorite</i></label>
+					<input type="text" name="Specialization" class="form__input" placeholder="Specialization" required>
+				</div> -->
+
+
+
+
+
+				<div class="container">
+
+					<!-- Trigger the modal with a button -->
+					<button style="margin-left: 7%;  background-color: cadetblue;margin-left: 7%;border-color: beige; " type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Let me in</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="myModal" role="dialog">
+						<div class="modal-dialog">
+
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title" style="color: cadetblue;font-family: inherit; ">Almost There...</h4>
+								</div>
+								<div class="modal-body">
+
+									<h3 style="color:black">Hi, Let us know about you for the best experience </h3>
+
+
+									<div class="form__field">
+										<label><i class="material-icons">favorite</i></label>
+										@Html.TextBoxFor(model => model.preferens.Specialization)
+									</div>
+
+									<div class="form__field">
+										<p style="    color: black;">Enter Your Prefered Time To Exercize</p>
+										@Html.RadioButtonFor(m => m.preferens.PreferedTime, "Morning") Morning
+										@Html.RadioButtonFor(m => m.preferens.PreferedTime, "Noon") Noon
+										@Html.RadioButtonFor(m => m.preferens.PreferedTime, "After Noon") After Noon
+									</div>
+
+									<div class="form__field">
+										<p style="    color: black;">Enter Your Prefered Time To Exercize</p>
+										@*@Html.TextBoxFor(model => model.pf.PreferedTime)*@
+									</div>
+
+									<div class="form__field">
+										<p style="    color: black;">Enter Your Prefered Time To Exercize</p>
+										@*@Html.TextBoxFor(model => model.pf.PreferedTime)*@
+									</div>
+								</div>
+
+								<div class="form__field">
+									<input type="submit" value="Sign Up" style=" background-color: cadetblue;">
+
+								</div>
+
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+
+
+			</form>
+		}
+
+
+
+		<p class="text--center">Already a member? <a href="~/Login/index">Login now</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
+
+	</div>
+
+	<svg xmlns="http://www.w3.org/2000/svg" class="icons"><symbol id="arrow-right" viewBox="0 0 1792 1792"><path d="M1600 960q0 54-37 91l-651 651q-39 37-91 37-51 0-90-37l-75-75q-38-38-38-91t38-91l293-293H245q-52 0-84.5-37.5T128 1024V896q0-53 32.5-90.5T245 768h704L656 474q-38-36-38-90t38-90l75-75q38-38 90-38 53 0 91 38l651 651q37 35 37 90z" /></symbol><symbol id="lock" viewBox="0 0 1792 1792"><path d="M640 768h512V576q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28H416q-40 0-68-28t-28-68V864q0-40 28-68t68-28h32V576q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z" /></symbol><symbol id="user" viewBox="0 0 1792 1792"><path d="M1600 1405q0 120-73 189.5t-194 69.5H459q-121 0-194-69.5T192 1405q0-53 3.5-103.5t14-109T236 1084t43-97.5 62-81 85.5-53.5T538 832q9 0 42 21.5t74.5 48 108 48T896 971t133.5-21.5 108-48 74.5-48 42-21.5q61 0 111.5 20t85.5 53.5 62 81 43 97.5 26.5 108.5 14 109 3.5 103.5zm-320-893q0 159-112.5 271.5T896 896 624.5 783.5 512 512t112.5-271.5T896 128t271.5 112.5T1280 512z" /></symbol></svg>
+
+</body>
+
