@@ -8,7 +8,7 @@
 *.sln.docstates
 /.vs
 /.obj\debug
-.suo
+/.suo
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
