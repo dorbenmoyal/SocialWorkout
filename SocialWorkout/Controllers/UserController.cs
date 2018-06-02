@@ -76,5 +76,10 @@ namespace SocialWorkout.Controllers
 
             return View();
         }
+
+        public ActionResult Tryto()
+        {
+            return View();
+        }
     }
 }

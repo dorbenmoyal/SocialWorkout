@@ -15,7 +15,7 @@ namespace SocialWorkout.Models
 
 
         
-        public string Specialization { get; set; }
+        public bool Specialization { get; set; }
 
 
         public String PreferedTime { get; set; }
