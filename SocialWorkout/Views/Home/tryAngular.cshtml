@@ -1,0 +1,69 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<meta name="viewport" content="width=device-width" />
+	<title>tryAngular</title>
+</head>
+<body>
+
+
+	<div ng-app="myApp" ng-controller="customersCtrl">
+		<table border=1>
+			<thead>
+				<tr>
+
+					<th>Email</th>
+					<th>Password</th>
+					<th>FirstName</th>
+					<th>LastName</th>
+					<th>Age</th>
+					<th>Country</th>
+					<th>Gender</th>
+					<th>preferens</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="x in myData">
+
+					<td>{{x.Email}}</td>
+					<td>{{x.Password}}</td>
+					<td>{{x.FirstName}}</td>
+					<td>{{x.LastName}}</td>
+					<td>{{x.Age}}</td>
+					<td>{{x.Country}}</td>
+					<td>{{x.Gender}}</td>
+					<td>{{x.preferens.Specialization}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<input  ng-model="email" /> 
+
+		<button ng-click="clicked()"> Send Data</button>
+	</div>
+
+	
+
+		<script>
+			var app = angular.module('myApp', []);
+			app.controller('customersCtrl', function ($scope, $http) {
+
+				$scope.clicked = function myfunction() {
+					$http.post("http://localhost:58948/api/users", { Emasil: $scope.email, Password: 'testy' }).then(function (response) {
+						$scope.myData = response.data;
+						console.log($scope.myData);
+					});
+
+				}
+
+				
+			});
+
+
+		</script>
+
+</body>
+</html>
