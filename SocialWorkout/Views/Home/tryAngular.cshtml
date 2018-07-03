@@ -1,4 +1,9 @@
 ﻿
+@{
+
+	string x = "5b19970fbd297a5620cbc261";
+}
+
 <!DOCTYPE html>
 
 <html>
@@ -51,16 +56,22 @@
 			var app = angular.module('myApp', []);
 			app.controller('customersCtrl', function ($scope, $http) {
 
-				$scope.clicked = function myfunction() {
-					$http.post("http://localhost:58948/api/users", { Emasil: $scope.email, Password: 'testy' }).then(function (response) {
-						$scope.myData = response.data;
-						console.log($scope.myData);
-					});
+				$http({
+					method: 'GET',
+					url: 'http://localhost:58948/api/users/@x'
+				}).then(function successCallback(response) {
+					$scope.myData = response;
+					console.log($scope.myData);
+				}, function errorCallback(response) {
+					// called asynchronously if an error occurs
+					// or server returns response with an error status.
+				});
 
-				}
 
-				
+
+
 			});
+
 
 
 		</script>

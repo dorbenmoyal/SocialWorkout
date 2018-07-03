@@ -1,0 +1,67 @@
+﻿
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>tryDX</title>
+
+
+
+
+	<!-- DevExtreme dependencies -->
+	<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.1.0.min.js"></script>
+	<!-- The AngularJS library -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+	<!-- DevExtreme themes -->
+	<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/18.1.4/css/dx.common.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/18.1.4/css/dx.light.css" />
+	<!-- A DevExtreme library -->
+	<script type="text/javascript" src="https://cdn3.devexpress.com/jslib/18.1.4/js/dx.all.js"></script>
+
+
+</head>
+<body ng-app="myApp" ng-controller="ChartCTRL">
+
+
+	<div id="tagBoxContainer"></div>
+
+
+	<script>
+		var products = ["HD Video Player", "SuperHD Video Player", "SuperPlasma 50", "SuperLED 50"];
+
+		$(function () {
+			$("#tagBoxContainer").dxTagBox({
+				dataSource: products,
+				searchEnabled: true
+			});
+		});
+
+
+
+
+	</script>
+	<script>
+		app = angular.module('myApp', ['dx']);
+
+		app.controller("ChartCTRL", function ($scope) {
+			var tagBoxData = [
+				{ id: 1, country: "Afghanistan" },
+				{ id: 2, country: "Albania" },
+				
+			];
+
+
+		
+
+		});
+
+	</script>
+</body>
+
+
+</html>

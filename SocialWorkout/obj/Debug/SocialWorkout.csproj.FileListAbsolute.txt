@@ -259,3 +259,5 @@ D:\dot net\projects\SocialWorkout\SocialWorkout\bin\ko\System.Spatial.resources.
 D:\dot net\projects\SocialWorkout\SocialWorkout\bin\ru\System.Spatial.resources.dll
 D:\dot net\projects\SocialWorkout\SocialWorkout\bin\zh-Hans\System.Spatial.resources.dll
 D:\dot net\projects\SocialWorkout\SocialWorkout\bin\zh-Hant\System.Spatial.resources.dll
+D:\dot net\projects\SocialWorkout\SocialWorkout\bin\Swashbuckle.Core.dll
+D:\dot net\projects\SocialWorkout\SocialWorkout\bin\WebActivatorEx.dll

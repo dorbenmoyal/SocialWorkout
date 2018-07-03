@@ -43,6 +43,15 @@ namespace SocialWorkout.Models
                 return Users;
             }
         }
+        public MongoCollection<dropDownData> dropDownData
+        {
+            get
+            {
+                var DATA = Database.GetCollection<dropDownData>("dropDownData");
+
+                return DATA;
+            }
+        }
     }
 
 }

@@ -42,9 +42,26 @@ namespace SocialWorkout.Controllers
             {
                 return Content("<script language='javascript' type='text/javascript'>alert('Invalid User Name Or Password!');</script>");
             }
+           
+
+            if (user.preferens == null)
+            {
+                string uid = user.Id;
+                return RedirectToAction("Wizard", new { userObjectId=uid });
+            }
+
             Session.Add("Customer", user);
 
             return RedirectToAction("Index", "Home");
+
+        }
+
+        public ActionResult Wizard(string userObjectId)
+        {
+
+            ViewBag.UserId = userObjectId;
+
+            return View();
 
         }
   

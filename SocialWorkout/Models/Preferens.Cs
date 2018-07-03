@@ -10,8 +10,7 @@ namespace SocialWorkout.Models
 {
     public class Preferens
     {
-        [BsonRepresentation(BsonType.ObjectId)]
-        public String Id { get; set; }
+      
 
 
         
@@ -19,7 +18,10 @@ namespace SocialWorkout.Models
 
 
         public String PreferedTime { get; set; }
-        
-        
+
+
+        public String Description { get; set; }
+
+
     }
 }

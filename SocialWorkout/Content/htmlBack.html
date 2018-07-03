@@ -1,0 +1,18 @@
+﻿<div class="modal-body">
+
+	<h3 style="color:black">Hi, Let us know about you for the best experience </h3>
+
+
+
+	<input class="nond" style="height: 0%;" type="text" value="Running,FootBall,Hokey" data-role="tagsinput" placeholder="Write Down Your Favorites Sports" />
+
+	@Html.CheckBoxFor(m => m.preferens.Specialization, "dogs")
+
+
+
+	<p style="    color: black;">Enter Your Best Time To Work Out</p>
+	@Html.RadioButtonFor(m => m.preferens.PreferedTime, "Morning") Morning
+	@Html.RadioButtonFor(m => m.preferens.PreferedTime, "Noon") Noon
+	@Html.RadioButtonFor(m => m.preferens.PreferedTime, "After Noon") After Noon
+
+</div>

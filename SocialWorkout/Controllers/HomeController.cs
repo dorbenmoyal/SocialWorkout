@@ -84,7 +84,11 @@ namespace SocialWorkout.Controllers
         {
             return View();
         }
-        public ActionResult Wizard()
+        public ActionResult tryDX()
+        {
+            return View();
+        }
+        public ActionResult tryMap()
         {
             return View();
         }
