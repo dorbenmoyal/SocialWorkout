@@ -183,23 +183,26 @@
 	</div>
 	<script>
 
-		var arr;
+		
 
 		$.get("http://localhost:58948/api/dropDownData", function (data) {
 			
-			arr = data;
-			console.log(arr);
+		
+			var dataSource = new DevExpress.data.DataSource({
+				store: {
+					type: "array",
+					key: "id",
+					data: data
+				}
+			
 		});
 
-		var tagBoxData = [
-			{ id: 1, country: "Afghanistan" },
-			{ id: 2, country: "Albania" },
-			// . . .
-		];
+
+	
 
 		$(function () {
 			$("#tagBoxContainer").dxTagBox({
-				dataSource: arr,
+				dataSource: dataSource,
 				valueExpr: 'id',
 				displayExpr: 'favoriteSports'
 			});
