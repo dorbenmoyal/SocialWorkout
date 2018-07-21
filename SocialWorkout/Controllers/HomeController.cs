@@ -11,60 +11,16 @@ namespace SocialWorkout.Controllers
 
         public ActionResult Index()
         {
-            var Countries = Context.Countries.FindAll();
-            return View(Countries);
-        }
-
-        public ActionResult Create()
-        {
+         
             return View();
-
         }
+
+    
         public ActionResult Home()
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult Create(Country _Country)
-        {
-            if (ModelState.IsValid)
-            {
-                Context.Countries.Insert(_Country);
-                return RedirectToAction("Index");
-            }
-            return View();
-        }
 
-        public ActionResult Edit(string Id)
-        {
-            var Country = Context.Countries.FindOneById(new ObjectId(Id));
-            return View(Country);
-        }
-
-        [HttpPost]
-        public ActionResult Edit(Country _Country)
-        {
-            if (ModelState.IsValid)
-            {
-                Context.Countries.Save(_Country);
-                return RedirectToAction("Index");
-            }
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult Delete(string Id)
-        {
-            var rental = Context.Countries.FindOneById(new ObjectId(Id));
-            return View(rental);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(string Id)
-        {
-            var rental = Context.Countries.Remove(Query.EQ("_id", new ObjectId(Id)));
-            return RedirectToAction("Index");
-        }
 
         public ActionResult About()
         {
@@ -80,25 +36,17 @@ namespace SocialWorkout.Controllers
             return View();
         }
 
-        public ActionResult tryAngular()
-        {
-            return View();
-        }
-        public ActionResult tryDX()
-        {
-            return View();
-        }
+
         public ActionResult tryMap()
         {
+
             return View();
         }
 
-        public ActionResult trymap2() {
-
+        public ActionResult tryLayout()
+        {
 
             return View();
-
-
         }
     }
 }
