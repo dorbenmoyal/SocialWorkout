@@ -36,12 +36,142 @@
 	<!-- A DevExtreme library -->
 	<script type="text/javascript" src="https://cdn3.devexpress.com/jslib/18.1.4/js/dx.all.js"></script>
 	<style>
-		#map {
-			height: 40%;
-			width: 30%;
-			position:absolute !important;
-			margin-top:5%;
+		#tagBoxContainer {
+			width: 62%;
+			margin-left: 19%;
 		}
+	</style>
+	<style>
+		/* Always set the map height explicitly to define the size of the div
+		* element that contains the map. */
+		#map {
+			height: 50%;
+			width: 91%;
+			position: absolute !important;
+			margin-top: -1%;
+		}
+		/* Optional: Makes the sample page fill the window. */
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		#description {
+			font-family: Roboto;
+			font-size: 15px;
+			font-weight: 300;
+		}
+
+		#infowindow-content .title {
+			font-weight: bold;
+		}
+
+		#infowindow-content {
+			display: none;
+		}
+
+		#map #infowindow-content {
+			display: inline;
+		}
+
+		.pac-card {
+			margin: 10px 10px 0 0;
+			border-radius: 2px 0 0 2px;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			outline: none;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+			background-color: #fff;
+			font-family: Roboto;
+			z-index: 0;
+			position: fixed !important;
+			right: 47% !important;
+			top: 54% !important;
+		}
+
+		#pac-container {
+			padding-bottom: 12px;
+			margin-right: 12px;
+		}
+
+		.pac-controls {
+			display: inline-block;
+			padding: 5px 11px;
+		}
+
+			.pac-controls label {
+				font-family: Roboto;
+				font-size: 13px;
+				font-weight: 300;
+			}
+
+		#pac-input {
+			background-color: #fff;
+			font-family: Roboto;
+			font-size: 15px;
+			font-weight: 300;
+			margin-left: 12px;
+			padding: 0 11px 0 13px;
+			text-overflow: ellipsis;
+			width: 400px;
+		}
+
+			#pac-input:focus {
+				border-color: #4d90fe;
+			}
+
+		#title {
+			color: #fff;
+			background-color: #4d90fe;
+			font-size: 17px;
+			font-weight: 500;
+			padding: 0px 81px;
+		}
+		.slider {
+			-webkit-appearance: none;
+			width: 100%;
+			height: 15px;
+			border-radius: 5px;
+			background: #d3d3d3;
+			outline: none;
+			opacity: 0.7;
+			-webkit-transition: .2s;
+			transition: opacity .2s;
+			display: inline-block;
+		}
+
+			.slider::-webkit-slider-thumb {
+				-webkit-appearance: none;
+				appearance: none;
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+				background: #4CAF50;
+				cursor: pointer;
+			}
+
+			.slider::-moz-range-thumb {
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+				background: #4CAF50;
+				cursor: pointer;
+			}
+		.right {
+			margin-left: 5px;
+			vertical-align: middle;
+			float: right;
+			color:red;
+			font-weight:bold;
+
+		}
+
+		input[type=range] {
+			display: table;
+			width: 90%;
+		}
+
 	</style>
 
 </head>
@@ -55,7 +185,7 @@
 				<div class="col-sm-8 col-sm-offset-2">
 					<!--      Wizard container        -->
 					<div class="wizard-container">
-						<div class="card wizard-card" data-color="green" id="wizard" style="width:101%">
+						<div class="card wizard-card" data-color="green" id="wizard" style="width:126%">
 							<form action="" method="">
 								<!--        You can switch ' data-color="green" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
 								<div class="wizard-header">
@@ -72,26 +202,40 @@
 										<li><a href="#location" data-toggle="tab">Location</a></li>
 										<li><a href="#type" data-toggle="tab">Favorite Sports</a></li>
 										<li><a href="#facilities" data-toggle="tab">Personal Preferences</a></li>
-										<li><a href="#description" data-toggle="tab">Description</a></li>
+										<li><a href="#Photo" data-toggle="tab">Photo</a></li>
+										<li><a href="#description" data-toggle="tab">About You</a></li>
 									</ul>
 								</div>
 								<div class="tab-content">
 									<div class="tab-pane" id="location">
 										<div class="container">
+											<!-- Google Maps Search-->
 											<div class="row" style="width: 65.6%;">
-												<div align="center" class="col-sm-4" id="map">
 
+												<div class="pac-card" id="pac-card">
+													<div>
+														<div id="title">
+															Choose your workout location
+														</div>
+														<div style="display:none;" id="type-selector " class="pac-controls">
+															<input type="radio" name="type" id="changetype-all" checked="checked">
+															<label for="changetype-all">All</label>
 
+														</div>
+
+													</div>
+													<div id="pac-container">
+														<input id="pac-input" type="text"
+															   placeholder="Enter a location">
+													</div>
 												</div>
-												<div align="center" class="col-sm-4">
-													Your current Location
+												<div id="map"></div>
+												<div id="infowindow-content">
+													<img src="" width="16" height="16" id="place-icon">
+													<span id="place-name" class="title"></span><br>
+													<span id="place-address"></span>
 												</div>
-												<div align="center" class="col-sm-4">
-													One of three columns
-												</div>
-												<div align="center" class="col-sm-4">
-													One of three columns
-												</div>
+
 											</div>
 										</div>
 
@@ -99,51 +243,86 @@
 									<div class="tab-pane" id="type">
 										<h4 class="info-text">Choose your favorite sports </h4>
 										<div class="row">
-										<div id="tagBoxContainer"></div>
+
+											<div id="tagBoxContainer" ng-model="tagBox"></div>
+
 										</div>
 									</div>
 									<div class="tab-pane" id="facilities">
-										<h4 class="info-text">Tell us more about facilities. </h4>
-										<div class="row">
-										
-											<div class="col-sm-5">
-												<div class="form-group">
-													<label>Is air conditioning included ?</label>
-													<select class="form-control">
-														<option disabled="" selected="">- response -</option>
-														<option>Yes</option>
-														<option>No </option>
-													</select>
-												</div>
-											</div>
-											<div class="col-sm-5 col-sm-offset-1">
-												<div class="form-group">
-													<label>Does your place have wi-fi?</label>
-													<select class="form-control">
-														<option disabled="" selected="">- response -</option>
-														<option>Yes</option>
-														<option>No </option>
-													</select>
-												</div>
-											</div>
-											<div class="col-sm-5">
-												<div class="form-group">
-													<label>Is breakfast included?</label>
-													<select class="form-control">
-														<option disabled="" selected="">- response -</option>
-														<option>Yes</option>
-														<option>No </option>
-													</select>
-												</div>
+										<h4 style=" text-align: center;padding-bottom: -6%;">Tell us what are the most important considerations for you to get the best experience for you </h4>
+
+										<center><h3><small>Choose from 1-5 the importance for the next categories.</small></h3></center>
+
+										<div class="row" align="center" ng-model="">
+											<strong class="slidersStrong">Age</strong>
+											<div class="slidecontainer" style="width:40%;     padding: 1%; ">
+												<span class="right" id="demo"></span>
+
+												<input type="range" min="1" max="5" value="3" class="slider" id="myRange"ng-model="AgeValue">
 											</div>
 										</div>
+
+
+										<div class="row" align="center">
+											<strong class="slidersStrong">Gender</strong>
+											<div class="slidecontainer" style="width:40%;     padding: 1%;">
+												<span class="right" id="demo1"></span>
+												<input type="range" min="1" max="5" value="3" class="slider" id="myRange1" ng-model="GenderValue">
+											</div>
+										</div>
+										<div class="row" align="center">
+											<strong class="slidersStrong">Location</strong>
+											<div class="slidecontainer" style="width:40%;    padding: 1%;">
+												<span class="right" id="demo2"></span>
+												<input type="range" min="1" max="5" value="3" class="slider" id="myRange2" ng-model="LocationValue">
+											</div>
+										</div>
+										<div class="row" align="center">
+											<strong class="slidersStrong">Rank</strong>
+											<div class="slidecontainer" style="width:40%;    padding: 1%;">
+												<span class="right" id="demo3"></span>
+												<input type="range" min="1" max="5" value="3" class="slider" id="myRange3" ng-model="RankValue">
+											</div>
+										</div>
+
+
+										<center><strong class="slidersStrong">Prefered time to workout</strong></center>
+										<div class="row" align="center">
+
+											<label class="checkbox-inline">
+												<input type="checkbox" value="" ng-model="Morning">Morning
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" value=""ng-model="Noon">Noon
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" value="" ng-model="Evening">Evening
+											</label>
+										</div>
+
+									</div>
+									<div class="tab-pane" id="Photo">
+										<h4 class="info-text">Upload Your Photo. </h4>
+
+										<div class="row" ng-model="Photosrc">
+
+
+											<div id="UserPhoto"> <h3 style="margin-left:20%;"> Thanks {{user.FirstName}} your photo Uploaded sucssesfully</h3></div>
+
+
+
+											<div id="fileUploaderContainer"></div>
+
+
+										</div>
+
 									</div>
 									<div class="tab-pane" id="description">
 										<div class="row">
-											<h4 class="info-text"> Drop us a small description. </h4>
+											<h4 class="info-text"> Write about yourself </h4>
 											<div class="col-sm-6 col-sm-offset-1">
 												<div class="form-group">
-													<label>Place description</label>
+													<label>About you</label>
 													<textarea ng-model="Description" class="form-control" placeholder="" rows="9">
 
 											</textarea>
@@ -152,7 +331,7 @@
 											<div class="col-sm-4">
 												<div class="form-group">
 													<label>Example</label>
-													<p class="description">"The place is really nice. We use it every sunday when we go fishing. It is so awesome."</p>
+													<p class="description">"Im looking for some partenrs to run with, I have alot of passion to running come and join me :-)"</p>
 												</div>
 											</div>
 										</div>
@@ -181,38 +360,78 @@
 
 
 	</div>
+
 	<script>
+		 slider = document.getElementById("myRange");
+		 output = document.getElementById("demo");
+		output.innerHTML = slider.value; // Display the default slider value
 
-		
+		// Update the current slider value (each time you drag the slider handle)
+		slider.oninput = function () {
+			output.innerHTML = this.value;
+		}
+		var slider1 = document.getElementById("myRange1");
+		var output1 = document.getElementById("demo1");
+		output1.innerHTML = slider.value; // Display the default slider value
 
-		$.get("http://localhost:58948/api/dropDownData", function (data) {
-			
-		
-			var dataSource = new DevExpress.data.DataSource({
-				store: {
-					type: "array",
-					key: "id",
-					data: data
-				}
-			
-		});
+		// Update the current slider value (each time you drag the slider handle)
+		slider1.oninput = function () {
+			output1.innerHTML = this.value;
+		}
+		var slider2 = document.getElementById("myRange2");
+		var output2 = document.getElementById("demo2");
+		output2.innerHTML = slider2.value; // Display the default slider value
 
+		// Update the current slider value (each time you drag the slider handle)
+		slider2.oninput = function () {
+			output2.innerHTML = this.value;
+		}
+		var slider3 = document.getElementById("myRange3");
+		var output3 = document.getElementById("demo3");
+		output3.innerHTML = slider3.value; // Display the default slider value
 
-	
-
-		$(function () {
-			$("#tagBoxContainer").dxTagBox({
-				dataSource: dataSource,
-				valueExpr: 'id',
-				displayExpr: 'favoriteSports'
-			});
-		});
-
-	
-
-
+		// Update the current slider value (each time you drag the slider handle)
+		slider3.oninput = function () {
+			output3.innerHTML = this.value;
+		}
 
 	</script>
+
+	<script>
+		$("#UserPhoto").hide();
+		 $.get("http://localhost:58948/api/users/@UserID", function init(user) {
+
+		$(function () {
+			$("#fileUploaderContainer").dxFileUploader({
+				name: "file",
+				uploadMode: "instantly",
+				multiple: false,
+				accept: "*",
+				value: [],
+				onUploaded: function (e) {
+					$("#UserPhoto").show();},
+				uploadHeaders: { id: user.Id },
+				uploadUrl: "http://localhost:58948/api/PhotoUpload"
+
+			});
+			 })
+		});
+
+	</script>
+
+	<script>
+		$(function () {
+			$("#tagBoxContainer").dxTagBox({
+				dataSource: "http://localhost:58948/api/FavoriteSports",
+				//valueExpr: 'id',
+				displayExpr: 'DropdownData',
+				searchEnabled: true
+			});
+		});
+	</script>
+
+	<script src="~/Scripts/Maps/SearchLocation.js"></script>
+
 	<script>
 		var app = angular.module('wizardApp', []);
 
@@ -226,28 +445,63 @@
 				//print data to console
 				console.log("user", userObj);
 
+				$scope.Photosrc = userObj.ImgSrc;
+
+
 				//put the Updated user content into Mlab -- users dataBase
 
 				$scope.clicked = function myfunction() {
+					var age = slider.value;
+					var gender = slider1.value;
+					var location = slider2.value;
+					var rank = slider3.value;
+					var placename = UserLocation;
 					//ng show the spinner
 					$scope.Finish = true;
+
+					var SelectedTagBoxItems = $("#tagBoxContainer").dxTagBox("instance").option("selectedItems");
+
+					var selectedList = [];
+
+					for (var key in SelectedTagBoxItems) {
+
+						var obj = SelectedTagBoxItems[key];
+						console.log(obj.DropdownData);
+						selectedList.push(obj.DropdownData);
+					};
+
+					console.log("List", selectedList);
+
+
+
+					console.log("Preferences", SelectedTagBoxItems);
 					//Updating inner Object data After user Click
-					userObj.preferens = { PreferedTime: $scope.PreferedTime, Description:$scope.Description};
+					userObj.preferens = {
+						Description: $scope.Description, Location: placename, Morning: $scope.Morning,
+						Evening: $scope.Evening, Noon: $scope.Noon, AgePreference: $scope.AgeValue, GenderPreference: $scope.GenderValue, LocationPreference: $scope.LocationValue,
+						RankPreference: $scope.RankValue, FavoriteSports: selectedList
+					};
 				$http.put("http://localhost:58948/api/users", userObj).then(function (response) {
 					console.log(response.status);
-
-
+					
 				});
+					window.location.href = "http://localhost:58948/Home/Index";
 				}
 			});
 
 		});
 
 	</script>
+
+
+
+
+
 	<!-- Scrips for Maps-->
-	<script src="~/Scripts/Maps/CurrentLocation.js"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV6Zmi60-AGfLtqBgbMSsbEeyVlLWJM_s&callback=initMap">
-	</script>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV6Zmi60-AGfLtqBgbMSsbEeyVlLWJM_s&libraries=places&callback=initMap"
+			async defer></script>
+
 
 </body>
 <!--   Core JS Files   -->

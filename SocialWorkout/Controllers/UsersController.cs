@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using Microsoft.AspNetCore.Http;
+using MongoDB.Bson;
 using MongoDB.Driver.Builders;
 using SocialWorkout.Models;
 using System;
@@ -6,43 +7,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
-
 namespace SocialWorkout.Controllers
 {
     public class UsersController : ApiController
     {
 
         private readonly DBcontext Context = new DBcontext();
+       
+        
+        
         // GET: api/Users
+        [HttpGet]
         public IEnumerable<User> Get()
         {
             return Context.Users.FindAll();
         }
 
-        // GET: api/Users/5
+       // [Route("api/getU")]
+
+        // GET: api/Users/{MongoId}
         public User Get(string Id)
         {
             var User = Context.Users.FindOneById(new ObjectId(Id));
             return User;
         }
 
-        //public bool GetUserMAil(string email)
-        //{
-        //    bool answer = false;
-        //    var search = Context.Users;
-        //    var query = Query<User>.EQ(u => u.Email, email);
 
-        //    if (query != null)
-        //    {
-        //        answer = true;
-        //    }
 
-        //    return answer;
-        //}
-
-        // POST: api/Users
-
+        [HttpPost]
         public void Post([FromBody] User user)
         {
             if (ModelState.IsValid)
@@ -51,7 +45,10 @@ namespace SocialWorkout.Controllers
             }
         }
 
+
+
         // PUT: api/Users/5
+        [HttpPut]
         public void Put([FromBody]User user)
         {
             if (ModelState.IsValid)
@@ -61,10 +58,12 @@ namespace SocialWorkout.Controllers
             }
         }
 
+
         // DELETE: api/Users/5
+        [HttpDelete]
         public void Delete(string id)
         {
-            var user = Context.Users.Remove(Query.EQ("_id", new ObjectId(id)));
+           Context.Users.Remove(Query.EQ("_id", new ObjectId(id)));
         }
     }
 }

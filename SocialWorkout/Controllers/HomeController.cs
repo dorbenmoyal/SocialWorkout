@@ -92,5 +92,13 @@ namespace SocialWorkout.Controllers
         {
             return View();
         }
+
+        public ActionResult trymap2() {
+
+
+            return View();
+
+
+        }
     }
 }

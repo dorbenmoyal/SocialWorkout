@@ -11,16 +11,23 @@ namespace SocialWorkout.Models
     public class Preferens
     {
       
+        public bool Morning { get; set; }
 
+        public bool Evening { get; set; }
 
-        
-        public bool Specialization { get; set; }
+        public bool Noon { get; set; }
 
+        public int AgePreference { get; set; }
+        public int GenderPreference { get; set; }
+        public int LocationPreference { get; set; }
+        public int RankPreference { get; set; }
 
-        public String PreferedTime { get; set; }
-
+        public string Location { get; set; }
 
         public String Description { get; set; }
+
+
+        public List<string> FavoriteSports { get; set; }
 
 
     }

@@ -29,7 +29,7 @@ namespace SocialWorkout.Models
 
         public string Gender { get; set; }
 
-       
+       public string ImgSrc { get; set; }
 
 
         public Preferens preferens { get; set; }
