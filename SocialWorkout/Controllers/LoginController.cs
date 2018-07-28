@@ -50,7 +50,7 @@ namespace SocialWorkout.Controllers
                 return RedirectToAction("Wizard", new { userObjectId=uid });
             }
 
-            Session.Add("Customer", user);
+            Session.Add("Customer", user.Id);
 
             return RedirectToAction("Index", "Home");
 

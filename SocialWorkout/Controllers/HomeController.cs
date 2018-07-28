@@ -9,9 +9,9 @@ namespace SocialWorkout.Controllers
     {
         private readonly DBcontext Context = new DBcontext();
 
-        public ActionResult Index()
+        public ActionResult Index(string uid)
         {
-         
+            
             return View();
         }
 

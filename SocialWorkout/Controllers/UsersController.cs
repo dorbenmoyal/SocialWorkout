@@ -15,9 +15,9 @@ namespace SocialWorkout.Controllers
     {
 
         private readonly DBcontext Context = new DBcontext();
-       
-        
-        
+
+
+
         // GET: api/Users
         [HttpGet]
         public IEnumerable<User> Get()
@@ -25,7 +25,7 @@ namespace SocialWorkout.Controllers
             return Context.Users.FindAll();
         }
 
-       // [Route("api/getU")]
+        // [Route("api/getU")]
 
         // GET: api/Users/{MongoId}
         public User Get(string Id)
@@ -63,7 +63,25 @@ namespace SocialWorkout.Controllers
         [HttpDelete]
         public void Delete(string id)
         {
-           Context.Users.Remove(Query.EQ("_id", new ObjectId(id)));
+            Context.Users.Remove(Query.EQ("_id", new ObjectId(id)));
+        }
+
+        [Route("api/GetMatchedUsers")]
+        [HttpGet]
+        public int GetMatchedUsers(string uid)
+        {
+            var UsersList= Context.Users.FindAll();
+            var User = Context.Users.FindOneById(new ObjectId(uid));
+            List<User> UpdatedUsers = new List<User>();
+
+            foreach (var item in UsersList)
+            {
+
+            }
+
+
+            return 6;
+
         }
     }
 }

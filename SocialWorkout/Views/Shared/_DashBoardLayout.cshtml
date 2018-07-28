@@ -23,25 +23,25 @@
 	<!-- CSS Files -->
 	<link href="~/Content/paper-dashboard-2-html-v2.0.0/assets/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="~/Content/paper-dashboard-2-html-v2.0.0/assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+	<!--Angular -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 </head>
-<body class="">
+<body class=""  ng-app="LayoutApp" ng-controller="LayoutCtrl">
 	<div class="wrapper ">
 		<div class="sidebar" data-color="white" data-active-color="danger">
 			<!--
 				Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
 			-->
 			<div class="logo">
-				<a href="http://www.creative-tim.com" class="simple-text logo-mini">
+				<a  class="simple-text logo-mini">
 					<div class="logo-image-small">
-						<img src="~/Content/paper-dashboard-2-html-v2.0.0/assets/img/logo-small.png">
+						<img src="~/Content/UsersPhotos/{{User.ImgSrc}}">
 					</div>
 				</a>
-				<a href="http://www.creative-tim.com" class="simple-text logo-normal">
+				<a class="simple-text logo-normal">
 					Social Workout
-					<!-- <div class="logo-image-big">
-					  <img src="~/Content/paper-dashboard-2-html-v2.0.0/assets/img/logo-big.png">
-					</div> -->
+
 				</a>
 			</div>
 			<div class="sidebar-wrapper">
@@ -109,7 +109,7 @@
 								<span class="navbar-toggler-bar bar3"></span>
 							</button>
 						</div>
-						<a class="navbar-brand" href="#pablo">Hi Dor</a>
+						<a class="navbar-brand" href="#pablo">Welcome {{User.FirstName}}</a>
 					</div>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-bar navbar-kebab"></span>
@@ -195,6 +195,25 @@
 			// Javascript method's body can be found in assets/assets-for-demo/js/demo.js
 			demo.initChartsPages();
 		});
+	</script>
+	<script>
+
+		var app = angular.module('LayoutApp', []);
+		app.controller('LayoutCtrl', function ($scope, $http) {
+
+			$http.get("http://localhost:58948/api/users/@Session["Customer"].ToString()").then(function (response) {
+
+				$scope.User = response.data;
+				console.log($scope.User);
+
+			});
+
+		});
+
+
+
+
+
 	</script>
 </body>
 </html>

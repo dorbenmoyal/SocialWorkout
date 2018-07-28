@@ -31,15 +31,17 @@
 		infowindow.setContent(infowindowContent);
 		var marker = new google.maps.Marker({
 		  map: map,
-		  anchorPoint: new google.maps.Point(0, -29)
+			anchorPoint: new google.maps.Point(0, -29)
+		
 		});
-
+		
 		autocomplete.addListener('place_changed', function() {
 		  infowindow.close();
 			marker.setVisible(false);
 			// Place User object to work with
 			var place = autocomplete.getPlace();
-			console.log("Place TO check:",place.name);
+			console.log("Place TO check:", place.position.lat());
+			console.log("Marker", marker);
 			
 		  if (!place.geometry) {
 			// User entered the name of a Place that was not suggested and
@@ -59,7 +61,8 @@
 			map.setZoom(17);  // Why 17? Because it looks good.
 		  }
 		  marker.setPosition(place.geometry.location);
-		  marker.setVisible(true);
+			marker.setVisible(true);
+
 
 		  var address = '';
 		  if (place.address_components) {
@@ -73,7 +76,8 @@
 		  infowindowContent.children['place-icon'].src = place.icon;
 		  infowindowContent.children['place-name'].textContent = place.name;
 		  infowindowContent.children['place-address'].textContent = address;
-		  infowindow.open(map, marker);
+			infowindow.open(map, marker);
+			
 		});
 
 		// Sets a listener on a radio button to change the filter type on Places
@@ -94,7 +98,8 @@
 			.addEventListener('click', function() {
 			  console.log('Checkbox clicked! New state=' + this.checked);
 			  autocomplete.setOptions({strictBounds: this.checked});
-			});
+			  });
+		
 }
 
 

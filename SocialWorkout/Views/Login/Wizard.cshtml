@@ -484,7 +484,10 @@
 				$http.put("http://localhost:58948/api/users", userObj).then(function (response) {
 					console.log(response.status);
 					
-				});
+					});
+
+					window.setTimeout(setTimeout(function () { console.log('TimeOutTrigerd'); }, 3000));
+
 					window.location.href = "http://localhost:58948/Home/Index";
 				}
 			});
