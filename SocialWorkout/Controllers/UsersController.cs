@@ -70,15 +70,7 @@ namespace SocialWorkout.Controllers
         [HttpGet]
         public int GetMatchedUsers(string uid)
         {
-            var UsersList= Context.Users.FindAll();
-            var User = Context.Users.FindOneById(new ObjectId(uid));
-            List<User> UpdatedUsers = new List<User>();
-
-            foreach (var item in UsersList)
-            {
-
-            }
-
+          
 
             return 6;
 

@@ -52,6 +52,15 @@ namespace SocialWorkout.Models
                 return DATA;
             }
         }
+        public MongoCollection<Trainer> Trainers
+        {
+            get
+            {
+                var Trainers = Database.GetCollection<Trainer>("Trainer");
+
+                return Trainers;
+            }
+        }
     }
 
 }

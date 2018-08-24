@@ -1,0 +1,43 @@
+﻿
+@{
+	ViewBag.Title = "friends";
+	Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+
+<head>
+
+	<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.1.0.min.js"></script>
+
+</head>
+
+<h2>Favorite Friends List</h2>
+<body>
+
+	<div class="container">
+		<div class="inner"></div>
+	</div>
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+	for (var i = 0; i < sessionStorage.length; i++) {
+
+		$(".inner").append("<p>"+sessionStorage.getItem(sessionStorage.key(i))+"</p>");
+	}
+
+
+
+</script>

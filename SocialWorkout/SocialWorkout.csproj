@@ -293,6 +293,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PhotoUploadController.cs" />
+    <Compile Include="Controllers\TrainerController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -303,6 +304,7 @@
     <Compile Include="Models\Data.cs" />
     <Compile Include="Models\Preferens.Cs" />
     <Compile Include="Models\PreferenseUserViewModel.cs" />
+    <Compile Include="Models\Trainer.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -391,6 +393,7 @@
     <Content Include="Content\paper-dashboard-2-html-v2.0.0\examples\user.html" />
     <Content Include="Content\paper-dashboard-2-html-v2.0.0\gulpfile.js" />
     <Content Include="Content\paper-dashboard-2-html-v2.0.0\nucleo-icons.html" />
+    <Content Include="Content\ProgressBar.css" />
     <Content Include="Content\UsersPhotos\profileTest.png" />
     <Content Include="Content\UsersPhotos\ThisExample.PNG" />
     <Content Include="Content\x-bootstrap-wizard-v1.1.1\assets\css\bootstrap.min.css" />
@@ -535,6 +538,9 @@
     <Content Include="Views\Home\trymap2.cshtml" />
     <Content Include="Views\Shared\_DashBoardLayout.cshtml" />
     <Content Include="Views\Home\tryLayout.cshtml" />
+    <Content Include="Views\Home\Index22222222.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\friends.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

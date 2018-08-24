@@ -1,0 +1,116 @@
+﻿@model SocialWorkout.Models.User
+
+@{
+	ViewBag.Title = "Details2";
+	Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+
+<head>
+
+	<link href="~/Content/ProgressBar.css" rel="stylesheet" />
+
+</head>
+
+
+
+<div ng-app="DetailsApp" ng-controller="DetailsCTRL">
+
+	<h2>@Html.DisplayFor(model => model.FirstName)'s Profile</h2>
+	Follow <span style="color:white">"</span>
+
+
+	<input ng-model="follow" ng-click="clicked()" type='button' class='btn btn-finish btn-fill btn-success btn-wd btn-sm' value='@Model.FirstName' id="userName" />
+
+
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="well well-sm">
+					<div class="row">
+						<div class="col-sm-6 col-md-4">
+							<img src="~/Content/UsersPhotos/@Model.ImgSrc" alt="" class="img-rounded img-responsive" />
+						</div>
+						<div class="progress blue">
+							<span class="progress-left">
+								<span class="progress-bar"></span>
+							</span>
+							<span class="progress-right">
+								<span class="progress-bar"></span>
+							</span>
+							<div class="progress-value">90%</div>
+						</div>
+						<div class="col-sm-6 col-md-8">
+							<h4>
+								@Html.DisplayFor(model => model.FirstName) 	@Html.DisplayFor(model => model.LastName)
+							</h4>
+							<small>
+								<cite title="">
+									Country: 	@Html.DisplayFor(model => model.Country) <i class="glyphicon glyphicon-map-marker"><br />
+	Gender: 	@Html.DisplayFor(model => model.Gender) <i class="glyphicon glyphicon-map-marker">
+	</i>
+</cite>
+							</small>
+							<p>
+								<i class="glyphicon glyphicon-envelope"></i>	@Html.DisplayFor(model => model.Email)
+								<br />
+
+								<br />
+								<i class="glyphicon glyphicon-gift"></i>Age:	@Html.DisplayFor(model => model.Age) <br />
+								<i class="glyphicon glyphicon-gift"></i><strong>What im looking for:</strong>	@Html.DisplayFor(model => model.preferens.Description)
+							</p>
+							<!-- Split button -->
+							<div class="btn-group">
+								<button type="button" class="btn btn-primary">
+									Social
+								</button>
+								<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+									<span class="caret"></span><span class="sr-only">Social</span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Twitter</a></li>
+									<li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
+									<li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Github</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<p>
+		@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+		@Html.ActionLink("Back to List", "Index")
+	</p>
+
+</div>
+
+<script>
+
+var app = angular.module('DetailsApp', []);
+	app.controller('DetailsCTRL', function ($scope, $http) {
+
+		$scope.clicked = function myfunction() {
+
+			var userName = document.getElementById("userName").value;
+
+			sessionStorage.setItem(userName, userName);
+
+
+		}
+
+
+
+
+
+	});
+
+
+
+
+
+</script>

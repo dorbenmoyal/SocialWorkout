@@ -1,16 +1,16 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-using System.ComponentModel.DataAnnotations;
-using SocialWorkout.Models;
 
 namespace SocialWorkout.Models
 {
-    public class User
+    public class Trainer
     {
+
         [BsonRepresentation(BsonType.ObjectId)]
         public String Id { get; set; }
         [Required(ErrorMessage = "Please enter your Email.")]
@@ -22,19 +22,12 @@ namespace SocialWorkout.Models
         [Required(ErrorMessage = "Please enter your LastName.")]
         public string LastName { get; set; }
 
-        public int Age { get; set; }
+        public String Description { get; set; }
 
-     
-        public string Country { get; set; }
-
-        public string Gender { get; set; }
-
-       public string ImgSrc { get; set; }
+        public List<string> Sports { get; set; }
 
 
-        public Preferens preferens { get; set; }
 
-        public double distance { get; set; }
 
     }
 }

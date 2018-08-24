@@ -451,6 +451,14 @@
 				//put the Updated user content into Mlab -- users dataBase
 
 				$scope.clicked = function myfunction() {
+
+					$http.get("http://localhost:58948/api/users/@UserID").then(function (response) {
+
+						var userObjUpdated = response.data;
+
+
+					
+
 					var age = slider.value;
 					var gender = slider1.value;
 					var location = slider2.value;
@@ -476,20 +484,32 @@
 
 					console.log("Preferences", SelectedTagBoxItems);
 					//Updating inner Object data After user Click
-					userObj.preferens = {
+						userObjUpdated.preferens = {
 						Description: $scope.Description, Location: placename, Morning: $scope.Morning,
 						Evening: $scope.Evening, Noon: $scope.Noon, AgePreference: $scope.AgeValue, GenderPreference: $scope.GenderValue, LocationPreference: $scope.LocationValue,
 						RankPreference: $scope.RankValue, FavoriteSports: selectedList
 					};
-				$http.put("http://localhost:58948/api/users", userObj).then(function (response) {
+						$http.put("http://localhost:58948/api/users", userObjUpdated).then(function (response) {
 					console.log(response.status);
 					
 					});
 
-					window.setTimeout(setTimeout(function () { console.log('TimeOutTrigerd'); }, 3000));
 
-					window.location.href = "http://localhost:58948/Home/Index";
+					var myVar = setInterval(myTimer, 6000);
+
+					myTimer();
+
+					function myTimer() {
+
+						window.location.href = "http://localhost:58948/Home/Index?uid=" + userObj.Id;
+
+						};
+
+					});
+
 				}
+						
+				
 			});
 
 		});

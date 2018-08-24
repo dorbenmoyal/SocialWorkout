@@ -40,8 +40,8 @@
 			marker.setVisible(false);
 			// Place User object to work with
 			var place = autocomplete.getPlace();
-			console.log("Place TO check:", place.position.lat());
-			console.log("Marker", marker);
+			console.log("Place TO check:", place);
+		
 			
 		  if (!place.geometry) {
 			// User entered the name of a Place that was not suggested and
@@ -62,6 +62,7 @@
 		  }
 		  marker.setPosition(place.geometry.location);
 			marker.setVisible(true);
+			console.log("ddddd", marker);
 
 
 		  var address = '';

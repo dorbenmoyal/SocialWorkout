@@ -27,7 +27,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 </head>
-<body class=""  ng-app="LayoutApp" ng-controller="LayoutCtrl">
+<body class=""  data-ng-app="LayoutApp" ng-controller="LayoutCtrl">
 	<div class="wrapper ">
 		<div class="sidebar" data-color="white" data-active-color="danger">
 			<!--
@@ -47,15 +47,15 @@
 			<div class="sidebar-wrapper">
 				<ul class="nav">
 					<li class="active ">
-						<a href="./dashboard.html">
+						<a href="#">
 							<i class="nc-icon nc-bank"></i>
 							<p>Dashboard</p>
 						</a>
 					</li>
 					<li>
-						<a href="./icons.html">
+						<a href="http://localhost:58948/Home/friends">
 							<i class="nc-icon nc-diamond"></i>
-							<p>Icons</p>
+							<p>My friends</p>
 						</a>
 					</li>
 					<li>
@@ -204,7 +204,8 @@
 			$http.get("http://localhost:58948/api/users/@Session["Customer"].ToString()").then(function (response) {
 
 				$scope.User = response.data;
-				console.log($scope.User);
+				user = response.data;
+				
 
 			});
 

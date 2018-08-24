@@ -52,7 +52,7 @@ namespace SocialWorkout.Controllers
 
             Session.Add("Customer", user.Id);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home",new { uid = user.Id});
 
         }
 
