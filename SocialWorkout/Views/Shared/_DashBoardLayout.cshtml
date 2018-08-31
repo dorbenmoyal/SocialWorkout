@@ -27,7 +27,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 </head>
-<body class=""  data-ng-app="LayoutApp" ng-controller="LayoutCtrl">
+<body class=""  ng-app="LayoutApp" ng-controller="LayoutCtrl">
 	<div class="wrapper ">
 		<div class="sidebar" data-color="white" data-active-color="danger">
 			<!--
@@ -47,7 +47,7 @@
 			<div class="sidebar-wrapper">
 				<ul class="nav">
 					<li class="active ">
-						<a href="#">
+						<a href='http://localhost:58948/Home/Index?uid={{User.Id}}'>
 							<i class="nc-icon nc-bank"></i>
 							<p>Dashboard</p>
 						</a>
@@ -59,9 +59,9 @@
 						</a>
 					</li>
 					<li>
-						<a href="./map.html">
-							<i class="nc-icon nc-pin-3"></i>
-							<p>Maps</p>
+						<a href="http://localhost:58948/Home/ShowMesagges?uid={{User.Id}}">
+							<i class="nc-icon nc-chat-33"></i>
+							<p>Messages</p>
 						</a>
 					</li>
 					<li>
@@ -190,12 +190,7 @@
 	<script src="~/Content/paper-dashboard-2-html-v2.0.0/assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="~/Content/paper-dashboard-2-html-v2.0.0/assets/demo/demo.js"></script>
-	<script>
-		$(document).ready(function () {
-			// Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-			demo.initChartsPages();
-		});
-	</script>
+	
 	<script>
 
 		var app = angular.module('LayoutApp', []);
@@ -205,6 +200,7 @@
 
 				$scope.User = response.data;
 				user = response.data;
+			
 				
 
 			});

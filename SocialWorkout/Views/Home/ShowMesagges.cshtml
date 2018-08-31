@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SocialWorkout.Models.Message>
+
+@{
+	ViewBag.Title = "ShowMesagges";
+	Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+
+<head>
+
+	<link href="~/Content/MailBox.css" rel="stylesheet" />
+</head>
+
+<style>
+	i.nc-icon.nc-diamond {
+		color: #66615B !important;
+	}
+
+	i.nc-icon.nc-bank {
+		color: #66615B !important;
+	}
+
+
+	i.nc-icon.nc-chat-33 {
+		color: red !important;
+	}
+
+	p {
+		color: #66615B !important;
+	}
+</style>
+
+<div class="tab-content">
+	<div class="tab-pane active" id="inbox">
+
+		<div class="container">
+			<div class="content-container clearfix">
+				<div class="col-md-12">
+					<h1 class="content-title">Inbox</h1>
+
+
+
+					<ul class="mail-list">
+						@foreach (var item in Model)
+						{
+							<li>
+								<a href="details/@item.SenderUserID">
+									<span class="mail-sender" style="color: #51cbce">@Html.DisplayFor(modelItem => item.SenderUserName)</span>
+									<span class="mail-subject" style=" font-size: 85%;" >@Html.DisplayFor(modelItem => item.SenderUserEmail)</span>
+									<span class="mail-message-preview"><b>@Html.DisplayFor(modelItem => item.Massage)</b></span>
+								</a>
+							</li>
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>

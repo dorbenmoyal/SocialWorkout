@@ -17,6 +17,38 @@ namespace SocialWorkout.Controllers
         private readonly DBcontext Context = new DBcontext();
 
 
+      
+        [HttpPost]
+        [Route("api/Users/ReciveMassage")]
+        public void ReciveMassage(MailMassageContent mail) {
+
+            User fromUser = Get(mail.SenderID);
+            User ToUser = Get(mail.ReciverID);
+
+            Message m = new Message() { Massage = mail.Massage, SenderUserID = fromUser.Id,SenderUserEmail=fromUser.Email,SenderUserName= fromUser.FirstName };
+
+            if (ToUser.mailBox == null) {
+
+                ToUser.mailBox = new MailBox();
+
+                List<Message> messageList = new List<Message>();
+
+                messageList.Add(m);
+
+                ToUser.mailBox.UserMessages = messageList;
+
+                Context.Users.Save(ToUser);
+
+            }
+            else
+            {
+                ToUser.mailBox.UserMessages.Add(m);
+                Context.Users.Save(ToUser);
+
+            }
+
+        }
+
 
         // GET: api/Users
         [HttpGet]

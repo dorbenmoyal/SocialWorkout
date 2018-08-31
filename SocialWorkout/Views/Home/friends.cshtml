@@ -8,25 +8,68 @@
 
 	<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.1.0.min.js"></script>
 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+	<style>
+		i.nc-icon.nc-diamond {
+			color: red !important;
+		}
+
+		i.nc-icon.nc-bank {
+			color: #66615B !important;
+		}
+
+		p {
+			color: #66615B !important;
+		}
+	</style>
+	<link href="~/Content/MailBox.css" rel="stylesheet" />
+
 </head>
 
-<h2>Favorite Friends List</h2>
+<h2>Favorite Friends List <i class="nc-icon nc-favourite-28" style="
+	color: red;
+"></i> </h2> 
 <body>
 
+	<div class="tab-content">
+		<div class="tab-pane active" id="inbox">
+
+			<div class="container">
+				<div class="content-container clearfix">
+					<div class="col-md-12">
+
+
+
+
+						<ul class="mail-list">
+
+
+							<li class="abc">
+
+								<span class="mail-sender"></span>
+
+								</a>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
 	<div class="container">
-		<div class="inner"></div>
+		<div class="inner">
+		</div>
 	</div>
 
 
 </body>
-
-
-
-
-
-
-
-
 
 
 
@@ -35,7 +78,8 @@
 
 	for (var i = 0; i < sessionStorage.length; i++) {
 
-		$(".inner").append("<p>"+sessionStorage.getItem(sessionStorage.key(i))+"</p>");
+		$(".abc").append("<p><a href=details/" + sessionStorage.key(i) + ">" + sessionStorage.getItem(sessionStorage.key(i)) + "</a></p>");
+
 	}
 
 

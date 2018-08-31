@@ -35,6 +35,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -302,6 +304,7 @@
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\DBcontext.cs" />
     <Compile Include="Models\Data.cs" />
+    <Compile Include="Models\MailBox.cs" />
     <Compile Include="Models\Preferens.Cs" />
     <Compile Include="Models\PreferenseUserViewModel.cs" />
     <Compile Include="Models\Trainer.cs" />
@@ -348,6 +351,7 @@
     <Content Include="Content\LoginTemplate\js\smoothscroll.js" />
     <Content Include="Content\LoginTemplate\js\wow.min.js" />
     <Content Include="Content\LogIn\LogIn.css" />
+    <Content Include="Content\MailBox.css" />
     <Content Include="Content\paper-dashboard-2-html-v2.0.0\assets\css\bootstrap.min.css" />
     <Content Include="Content\paper-dashboard-2-html-v2.0.0\assets\css\paper-dashboard.css" />
     <Content Include="Content\paper-dashboard-2-html-v2.0.0\assets\css\paper-dashboard.min.css" />
@@ -393,6 +397,7 @@
     <Content Include="Content\paper-dashboard-2-html-v2.0.0\examples\user.html" />
     <Content Include="Content\paper-dashboard-2-html-v2.0.0\gulpfile.js" />
     <Content Include="Content\paper-dashboard-2-html-v2.0.0\nucleo-icons.html" />
+    <Content Include="Content\popUp.css" />
     <Content Include="Content\ProgressBar.css" />
     <Content Include="Content\UsersPhotos\profileTest.png" />
     <Content Include="Content\UsersPhotos\ThisExample.PNG" />
@@ -541,6 +546,7 @@
     <Content Include="Views\Home\Index22222222.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\friends.cshtml" />
+    <Content Include="Views\Home\ShowMesagges.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -36,5 +36,6 @@ namespace SocialWorkout.Models
 
         public double distance { get; set; }
 
+        public MailBox mailBox { get; set; }
     }
 }

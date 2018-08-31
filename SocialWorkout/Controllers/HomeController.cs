@@ -48,7 +48,7 @@ namespace SocialWorkout.Controllers
                         double distanceGender = (CheckValue(CurrentUser.Gender, User.Gender)) * User.preferens.GenderPreference / sum;
                         double distanceTime = (CheckTime(User.preferens.Morning, CurrentUser.preferens.Morning, User.preferens.Noon, CurrentUser.preferens.Noon, User.preferens.Evening, CurrentUser.preferens.Evening)
                             ) * User.preferens.RankPreference / sum;
-                        double distance = System.Math.Sqrt(distanceAge + distanceLocation + distanceGender + distanceTime);
+                        double distance = System.Math.Round(System.Math.Sqrt(distanceAge + distanceLocation + distanceGender + distanceTime),0);
 
 
 
@@ -97,6 +97,27 @@ namespace SocialWorkout.Controllers
         {
             return View();
         }
+
+
+        public ActionResult ShowMesagges(string uid)
+        {
+            var UsersList = Context.Users.FindAll();
+            var User = Context.Users.FindOneById(new ObjectId(uid));
+
+            if (User.mailBox.UserMessages.Count == 0)
+            {
+                return View("Index");
+            }
+
+
+            List<Message> UserMessages = User.mailBox.UserMessages;
+
+          
+
+
+            return View(UserMessages);
+        }
+
 
 
         public ActionResult About()

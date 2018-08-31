@@ -457,7 +457,7 @@
 						var userObjUpdated = response.data;
 
 
-					
+
 
 					var age = slider.value;
 					var gender = slider1.value;
@@ -488,28 +488,26 @@
 						Description: $scope.Description, Location: placename, Morning: $scope.Morning,
 						Evening: $scope.Evening, Noon: $scope.Noon, AgePreference: $scope.AgeValue, GenderPreference: $scope.GenderValue, LocationPreference: $scope.LocationValue,
 						RankPreference: $scope.RankValue, FavoriteSports: selectedList
-					};
+						};
+
 						$http.put("http://localhost:58948/api/users", userObjUpdated).then(function (response) {
-					console.log(response.status);
-					
+							console.log(response.status);
+
+						
+
+
+							window.location.href = "http://localhost:58948/Login/Index";
+
 					});
 
 
-					var myVar = setInterval(myTimer, 6000);
 
-					myTimer();
-
-					function myTimer() {
-
-						window.location.href = "http://localhost:58948/Home/Index?uid=" + userObj.Id;
-
-						};
 
 					});
 
 				}
-						
-				
+
+
 			});
 
 		});
