@@ -78,7 +78,7 @@
 			<div class="sidebar-wrapper">
 				<ul class="nav">
 					<li class="active ">
-						<a href="#">
+						<a href='http://localhost:58948/Home/Index?uid={{User.Id}}'>
 							<i class="nc-icon nc-bank"></i>
 							<p>Dashboard</p>
 						</a>
@@ -96,15 +96,15 @@
 						</a>
 					</li>
 					<li>
-						<a href="./notifications.html">
+						<a href="http://localhost:58948/Home/Events">
 							<i class="nc-icon nc-bell-55"></i>
-							<p>Notifications</p>
+							<p>Events</p>
 						</a>
 					</li>
 					<li>
 						<a href="./user.html">
 							<i class="nc-icon nc-single-02"></i>
-							<p>User Profile</p>
+							<p>My Profile</p>
 						</a>
 					</li>
 					<li>
@@ -246,6 +246,80 @@
 						</main>
 
 				</section>
+
+				<section>
+
+
+					<main role="main" class="container">
+
+
+
+						<div class="my-3 p-3 bg-white rounded box-shadow">
+							<h6 class="border-bottom border-gray pb-2 mb-0">
+								Sport Events Of the week
+							</h6>
+
+						
+							<div id="accordion">
+								<div class="card">
+									<div class="card-header" id="headingOne">
+										<h5 class="mb-0">
+											<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+												Go running with moshe
+											</button>
+										</h5>
+									</div>
+
+									<div id="collapseOne" class="collapse in" aria-labelledby="headingOne" data-parent="#accordion">
+										<div class="card-body">
+											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+											<button id="Attending1" type="button" class="btn btn-light">Attending</button>
+										
+									
+										</div>
+									</div>
+								</div>
+								<div class="card">
+									<div class="card-header" id="headingTwo">
+										<h5 class="mb-0">
+											<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+												Play Socer with tzach
+											</button>
+										</h5>
+									</div>
+									<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+										<div class="card-body">
+											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+											<button id="Attending2" type="button" class="btn btn-light">Attending</button>
+										
+										</div>
+									</div>
+								</div>
+								<div class="card">
+									<div class="card-header" id="headingThree">
+										<h5 class="mb-0">
+											<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+												Swimming With Adi
+											</button>
+										</h5>
+									</div>
+									<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+										<div class="card-body">
+											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+											<button id="Attending3" type="button" class="btn btn-light">Attending</button>
+										
+										</div>
+									</div>
+								</div>
+							</div>
+						
+						</div>
+
+
+					</main>
+
+
+				</section>
 				
 			</div>
 		</div>
@@ -291,12 +365,54 @@
 
 
 		});
+	</script>
+
+	<script>
+
+		var sendDetails = function (eventName) {
+
+		var userID = '@Session["Customer"].ToString()';
+
+			var SendingObject = { EventName: eventName, userId: userID};
+
+			var url = "http://localhost:58948/api/Users/ReciveEvent";
+
+			$.ajax({
+				type: "POST",
+				url: url,
+				data: JSON.stringify(SendingObject),
+				dataType: "json",
+				contentType: "application/json"
+			});
 
 
+		};
+
+
+		var att1 = document.getElementById("Attending1");
+		var att2 = document.getElementById("Attending2");
+		var att3 = document.getElementById("Attending3");
+		var may1 = document.getElementById("Maybe1");
+		var may2 = document.getElementById("Maybe2");
+		var may3 = document.getElementById("Maybe3");
+
+		att1.addEventListener("click", function () {
+			console.log("clicked");
+			sendDetails("Event1");
+		});
+
+		att2.addEventListener("click", function () {
+			sendDetails("Event2");
+		});
+
+		att3.addEventListener("click", function () {
+			sendDetails("Event3");
+		});
 
 
 
 	</script>
+
 
 
 	<!--   Core JS Files   -->

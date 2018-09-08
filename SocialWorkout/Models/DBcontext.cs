@@ -61,6 +61,15 @@ namespace SocialWorkout.Models
                 return Trainers;
             }
         }
+        public MongoCollection<EventLine> Events
+        {
+            get
+            {
+                var events = Database.GetCollection<EventLine>("EventLine");
+
+                return events;
+            }
+        }
     }
 
 }

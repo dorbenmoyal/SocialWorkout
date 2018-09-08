@@ -98,14 +98,61 @@ namespace SocialWorkout.Controllers
             Context.Users.Remove(Query.EQ("_id", new ObjectId(id)));
         }
 
-        [Route("api/GetMatchedUsers")]
-        [HttpGet]
-        public int GetMatchedUsers(string uid)
+        [HttpPost]
+        [Route("api/Users/ReciveEvent")]
+        public void GetMatchedUsers(Event obj)
         {
-          
 
-            return 6;
+            User one = Get(obj.userId);
+
+            switch (obj.EventName)
+            {
+                case "Event1": {
+                        string event1 ="playing With mosh";
+
+                        string line1 = one.FirstName + " " + one.LastName + " " + "Is going to " + event1;
+
+                        EventLine ev = new EventLine() { line = line1 };
+                        Context.Events.Insert(ev);
+
+                        return;
+                        }
+
+                case "Event2":
+                    {
+                        string event2 = "playing Socker With Tzach";
+
+                        string line2 = one.FirstName + " " + one.LastName + " " + "Is going to " + event2;
+                        EventLine ev = new EventLine() { line = line2 };
+                        Context.Events.Insert(ev);
+
+                        return;
+                    }
+                
+
+
+                case "Event3":
+                    {
+                        string event3 = "Swimming With Adi";
+
+                        string line3 = one.FirstName + " " + one.LastName + " " + "Is going to " + event3;
+                        EventLine ev = new EventLine() { line = line3 };
+                        Context.Events.Insert(ev);
+
+                        return;
+                    }
+
+
+
+            }
+
+
+
 
         }
+
+
     }
+
+
 }

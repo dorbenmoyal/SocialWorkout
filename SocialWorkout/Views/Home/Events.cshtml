@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SocialWorkout.Models.EventLine>
+
+@{
+	Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Events For This Week</title>
+</head>
+
+<style>
+
+	i.nc-icon.nc-diamond {
+		color: #66615B !important;
+	}
+
+	i.nc-icon.nc-bank {
+		color: #66615B !important;
+	}
+
+	p {
+		color: #66615B !important;
+	}
+	i.nc-icon.nc-bell-55 {
+		color: red !important;
+	}
+
+</style>
+
+
+<body>
+	<p>
+
+	</p>
+	<table class="table">
+		<tr>
+			<th>
+				The players who attend to play this week
+			</th>
+			<th></th>
+		</tr>
+
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.line)
+				</td>
+				<td></td>
+			</tr>
+		}
+
+	</table>
+
+			
+
+
+
+</body>
+</html>

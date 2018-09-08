@@ -304,6 +304,8 @@
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\DBcontext.cs" />
     <Compile Include="Models\Data.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\EventLine.cs" />
     <Compile Include="Models\MailBox.cs" />
     <Compile Include="Models\Preferens.Cs" />
     <Compile Include="Models\PreferenseUserViewModel.cs" />
@@ -547,6 +549,12 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\friends.cshtml" />
     <Content Include="Views\Home\ShowMesagges.cshtml" />
+    <Content Include="Views\Home\CHECJNE.cshtml" />
+    <Content Include="Views\Home\MailBoxEmpty.cshtml" />
+    <Content Include="Views\Trainer\SignUp.cshtml" />
+    <Content Include="Views\Home\Events.cshtml" />
+    <Content Include="Views\Home\MyDetails.cshtml" />
+    <Content Include="Views\Trainer\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

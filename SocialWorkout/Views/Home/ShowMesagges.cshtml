@@ -27,6 +27,9 @@
 	p {
 		color: #66615B !important;
 	}
+	.deleteButton {
+		padding:0 !important;
+	}
 </style>
 
 <div class="tab-content">
@@ -42,13 +45,16 @@
 					<ul class="mail-list">
 						@foreach (var item in Model)
 						{
-							<li>
-								<a href="details/@item.SenderUserID">
-									<span class="mail-sender" style="color: #51cbce">@Html.DisplayFor(modelItem => item.SenderUserName)</span>
-									<span class="mail-subject" style=" font-size: 85%;" >@Html.DisplayFor(modelItem => item.SenderUserEmail)</span>
-									<span class="mail-message-preview"><b>@Html.DisplayFor(modelItem => item.Massage)</b></span>
-								</a>
-							</li>
+						<li>
+							<a href="details/@item.SenderUserID">
+								<span class="mail-sender" style="color: #51cbce">@Html.DisplayFor(modelItem => item.SenderUserName)</span>
+								<span class="mail-subject" style=" font-size: 85%;">@Html.DisplayFor(modelItem => item.SenderUserEmail)</span>
+								<span class="mail-message-preview"><b>@Html.DisplayFor(modelItem => item.Massage)</b></span>
+								@Html.ActionLink("Delete", "DeleteMessage", null, new {item.Massage,item.SenderUserID}, new { @class = "deleteButton" })
+							</a>
+						
+						</li>
+							
 						}
 					</ul>
 				</div>

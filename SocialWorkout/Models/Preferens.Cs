@@ -17,6 +17,8 @@ namespace SocialWorkout.Models
 
         public bool Noon { get; set; }
 
+        public bool Trainer { get; set; }
+
         public int AgePreference { get; set; }
         public int GenderPreference { get; set; }
         public int LocationPreference { get; set; }

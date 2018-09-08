@@ -49,9 +49,8 @@
 
 							<li class="abc">
 
-								<span class="mail-sender"></span>
 
-								</a>
+
 							</li>
 
 						</ul>
@@ -64,10 +63,8 @@
 	</div>
 
 	<div class="container">
-		<div class="inner">
-		</div>
+		<button id="clear" class="btn btn-primary"> Clear friends</button>
 	</div>
-
 
 </body>
 
@@ -79,8 +76,21 @@
 	for (var i = 0; i < sessionStorage.length; i++) {
 
 		$(".abc").append("<p><a href=details/" + sessionStorage.key(i) + ">" + sessionStorage.getItem(sessionStorage.key(i)) + "</a></p>");
-
+	
 	}
+
+</script>
+
+<script>
+
+	var x = document.getElementById("clear");
+
+	x.addEventListener("click", function () {
+
+		sessionStorage.clear();
+		location.reload();
+
+	});
 
 
 

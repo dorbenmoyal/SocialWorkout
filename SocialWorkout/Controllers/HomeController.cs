@@ -103,10 +103,11 @@ namespace SocialWorkout.Controllers
         {
             var UsersList = Context.Users.FindAll();
             var User = Context.Users.FindOneById(new ObjectId(uid));
+          
 
-            if (User.mailBox.UserMessages.Count == 0)
+            if (User.mailBox == null|| User.mailBox.UserMessages.Count == 0 )
             {
-                return View("Index");
+                return View("MailBoxEmpty");
             }
 
 
@@ -119,11 +120,44 @@ namespace SocialWorkout.Controllers
         }
 
 
+        public ActionResult DeleteMessage(string Massage, string SenderUserID)
+        {
+            var UsersList = Context.Users.FindAll();
+            string currentUserMail = null;
+            foreach (var user in UsersList)
+            {
+                var mailBox = user.mailBox;
+                if (mailBox != null)
+                {
+                    var mailBoxMessagesList = mailBox.UserMessages;
+                    foreach (var message in mailBoxMessagesList)
+                    {
+                        if (message.Massage == Massage && message.SenderUserID == SenderUserID)
+                        {
+                            mailBoxMessagesList.Remove(message);
+                            user.mailBox.UserMessages = mailBoxMessagesList;
+                            Context.Users.Save(user);
+                            currentUserMail = user.Id;
+                            break;
+                        }
+                    }
+                }
+
+            }
+            return RedirectToAction("ShowMesagges",new {uid=currentUserMail});
+
+        }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
+            return View();
+        }
+
+        public ActionResult MailBoxEmpty()
+        {
+         
             return View();
         }
 
@@ -142,11 +176,24 @@ namespace SocialWorkout.Controllers
             return View(User);
 
         }
+        public ActionResult MyDetails(string Id)
+        {
+            var User = Context.Users.FindOneById(new ObjectId(Id));
+
+            return View(User);
+
+        }
 
         public ActionResult friends()
         {
 
             return View();
+        }
+        public ActionResult Events()
+        {
+            var AllEvents = Context.Events.FindAll();
+
+            return View(AllEvents);
         }
     }
 }

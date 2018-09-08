@@ -247,6 +247,12 @@
 											<div id="tagBoxContainer" ng-model="tagBox"></div>
 
 										</div>
+										<br />
+										<div style="text-align: center;">
+											Check if you want personal Trainer
+
+											<input type="checkbox" value="" ng-model="Trainer">
+										</div>
 									</div>
 									<div class="tab-pane" id="facilities">
 										<h4 style=" text-align: center;padding-bottom: -6%;">Tell us what are the most important considerations for you to get the best experience for you </h4>
@@ -487,7 +493,7 @@
 						userObjUpdated.preferens = {
 						Description: $scope.Description, Location: placename, Morning: $scope.Morning,
 						Evening: $scope.Evening, Noon: $scope.Noon, AgePreference: $scope.AgeValue, GenderPreference: $scope.GenderValue, LocationPreference: $scope.LocationValue,
-						RankPreference: $scope.RankValue, FavoriteSports: selectedList
+						RankPreference: $scope.RankValue, FavoriteSports: selectedList,Trainer :$scope.Trainer
 						};
 
 						$http.put("http://localhost:58948/api/users", userObjUpdated).then(function (response) {

@@ -18,7 +18,7 @@ namespace SocialWorkout.Controllers
 
         public ActionResult Create()
         {
-            return View("SignUp");
+            return View("Create");
 
         }
         [HttpPost]
