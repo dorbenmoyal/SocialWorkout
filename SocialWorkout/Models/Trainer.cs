@@ -26,11 +26,21 @@ namespace SocialWorkout.Models
 
         public string Gender { get; set; }
 
-        public List<string> Sports { get; set; }
+        public string location { get; set; }
 
         public int Age { get; set; }
 
+        public int Price { get; set; }
 
+        public List<string> FavoriteSports { get; set; }
+
+        public bool Morning { get; set; }
+
+        public bool Evening { get; set; }
+
+        public bool Noon { get; set; }
+
+        public string ImgSrc { get; set; }
 
 
     }

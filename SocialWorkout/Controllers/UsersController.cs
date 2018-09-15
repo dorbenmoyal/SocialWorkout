@@ -92,7 +92,8 @@ namespace SocialWorkout.Controllers
 
 
         // DELETE: api/Users/5
-        [HttpDelete]
+        [HttpPost]
+        [Route("api/Users/DeleteMe")]
         public void Delete(string id)
         {
             Context.Users.Remove(Query.EQ("_id", new ObjectId(id)));

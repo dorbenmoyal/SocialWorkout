@@ -156,7 +156,7 @@
 				$http.get("http://localhost:58948/api/users").then(function (response) {
 					var users = response.data;
 					$scope.CheckForValidity = function () {
-					
+						
 						for (var user in users) {
 							var mail = users[user].Email;
 			

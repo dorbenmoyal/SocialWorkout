@@ -78,14 +78,19 @@
 
 								<br />
 								<i class="glyphicon glyphicon-gift"></i>Age:	@Html.DisplayFor(model => model.Age) <br />
-								<i class="glyphicon glyphicon-gift"></i><strong>Description:</strong>	@Html.DisplayFor(model => model.preferens.Description)
+								<i class="glyphicon glyphicon-gift"></i><strong>Description:</strong>
+								@Html.DisplayFor(model => model.preferens.Description)
 							</p>
+
+							<button id="delete"> delete my account</button>
+				
+
 							<!-- Split button -->
 							<!-- Message Model-->
 
 
 
-						
+
 							<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content" id="ModalContent">
@@ -174,6 +179,35 @@
 		}
 
 			);
+
+
+
+
+
+		</script>
+
+		<script>
+
+			var id = '@Session["Customer"].ToString()';
+
+
+			var x = document.getElementById('delete');
+			x.addEventListener("click", function () {
+
+
+				$.ajax({
+					type: "POST",
+					url: "http://localhost:58948/api/Users/DeleteMe",
+					data: JSON.stringify(id),
+					dataType: "json",
+					contentType: "application/json"
+				});
+
+
+
+
+
+			});
 
 
 

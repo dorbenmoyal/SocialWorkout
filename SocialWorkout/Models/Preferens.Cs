@@ -31,6 +31,8 @@ namespace SocialWorkout.Models
 
         public List<string> FavoriteSports { get; set; }
 
+    
+
 
     }
 }

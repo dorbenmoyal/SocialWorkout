@@ -27,7 +27,7 @@ namespace SocialWorkout.Controllers
             if (ModelState.IsValid)
             {
                 Context.Trainers.Insert(trainer);
-                return RedirectToAction("Index", "Login");
+                return RedirectToAction("Index", "TrainerLogin");
             }
             return View();
         }

@@ -1,0 +1,464 @@
+﻿
+@{
+	Layout = null;
+
+	string TrainerId = @ViewBag.TrainerId;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Compleate Registeration</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<meta name="viewport" content="width=device-width" />
+
+
+	<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.1.0.min.js"></script>
+	<!--Angular -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<!--     Fonts and icons     -->
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
+
+	<!-- CSS Files -->
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="~/Content/x-bootstrap-wizard-v1.1.1/assets/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
+
+	<!-- DX cdn-->
+	<!-- DevExtreme themes -->
+	<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/18.1.4/css/dx.common.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/18.1.4/css/dx.light.css" />
+	<!-- A DevExtreme library -->
+	<script type="text/javascript" src="https://cdn3.devexpress.com/jslib/18.1.4/js/dx.all.js"></script>
+	<style>
+		#tagBoxContainer {
+			width: 62%;
+			margin-left: 19%;
+		}
+	</style>
+	<style>
+		/* Always set the map height explicitly to define the size of the div
+		* element that contains the map. */
+		#map {
+			height: 50%;
+			width: 91%;
+			position: absolute !important;
+			margin-top: -1%;
+		}
+		/* Optional: Makes the sample page fill the window. */
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		#description {
+			font-family: Roboto;
+			font-size: 15px;
+			font-weight: 300;
+		}
+
+		#infowindow-content .title {
+			font-weight: bold;
+		}
+
+		#infowindow-content {
+			display: none;
+		}
+
+		#map #infowindow-content {
+			display: inline;
+		}
+
+		.pac-card {
+			margin: 10px 10px 0 0;
+			border-radius: 2px 0 0 2px;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			outline: none;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+			background-color: #fff;
+			font-family: Roboto;
+			z-index: 0;
+			position: fixed !important;
+			right: 47% !important;
+			top: 54% !important;
+		}
+
+		#pac-container {
+			padding-bottom: 12px;
+			margin-right: 12px;
+		}
+
+		.pac-controls {
+			display: inline-block;
+			padding: 5px 11px;
+		}
+
+			.pac-controls label {
+				font-family: Roboto;
+				font-size: 13px;
+				font-weight: 300;
+			}
+
+		#pac-input {
+			background-color: #fff;
+			font-family: Roboto;
+			font-size: 15px;
+			font-weight: 300;
+			margin-left: 12px;
+			padding: 0 11px 0 13px;
+			text-overflow: ellipsis;
+			width: 400px;
+		}
+
+			#pac-input:focus {
+				border-color: #4d90fe;
+			}
+
+		#title {
+			color: #fff;
+			background-color: #4d90fe;
+			font-size: 17px;
+			font-weight: 500;
+			padding: 0px 81px;
+		}
+
+		.slider {
+			-webkit-appearance: none;
+			width: 100%;
+			height: 15px;
+			border-radius: 5px;
+			background: #d3d3d3;
+			outline: none;
+			opacity: 0.7;
+			-webkit-transition: .2s;
+			transition: opacity .2s;
+			display: inline-block;
+		}
+
+			.slider::-webkit-slider-thumb {
+				-webkit-appearance: none;
+				appearance: none;
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+				background: #4CAF50;
+				cursor: pointer;
+			}
+
+			.slider::-moz-range-thumb {
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+				background: #4CAF50;
+				cursor: pointer;
+			}
+
+		.right {
+			margin-left: 5px;
+			vertical-align: middle;
+			float: right;
+			color: red;
+			font-weight: bold;
+		}
+
+		input[type=range] {
+			display: table;
+			width: 90%;
+		}
+	</style>
+
+</head>
+<body ng-app="wizardApp" ng-controller="wizardCtrl">
+	<div class="image-container set-full-height" style="
+	background-image:url('../../Images/stadium.jpg')">
+
+
+		<!--   Big container   -->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2">
+					<!--      Wizard container        -->
+					<div class="wizard-container">
+						<div class="card wizard-card" data-color="green" id="wizard" style="width:126%">
+							<form action="" method="">
+								<!--        You can switch ' data-color="green" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
+								<div class="wizard-header">
+									<h3>
+										<b>Welcome</b>  {{user.FirstName}} <br>
+										<small>We almost there.</small>
+
+										<small>Let us know about your experience.</small>
+
+									</h3>
+								</div>
+								<div class="wizard-navigation">
+									<ul>
+										<li><a href="#location" data-toggle="tab">Location</a></li>
+										<li><a href="#type" data-toggle="tab">Training Sports</a></li>
+										<li><a href="#facilities" data-toggle="tab">Timing</a></li>
+										<li><a href="#Photo" data-toggle="tab">Photo</a></li>
+										<li><a href="#description" data-toggle="tab">About You</a></li>
+									</ul>
+								</div>
+								<div class="tab-content">
+									<div class="tab-pane" id="location">
+										<div class="container">
+											<!-- Google Maps Search-->
+											<div class="row" style="width: 65.6%;">
+
+												<div class="pac-card" id="pac-card">
+													<div>
+														<div id="title">
+															Choose your workout location
+														</div>
+														<div style="display:none;" id="type-selector " class="pac-controls">
+															<input type="radio" name="type" id="changetype-all" checked="checked">
+															<label for="changetype-all">All</label>
+
+														</div>
+
+													</div>
+													<div id="pac-container">
+														<input id="pac-input" type="text"
+															   placeholder="Enter a location">
+													</div>
+												</div>
+												<div id="map"></div>
+												<div id="infowindow-content">
+													<img src="" width="16" height="16" id="place-icon">
+													<span id="place-name" class="title"></span><br>
+													<span id="place-address"></span>
+												</div>
+
+											</div>
+										</div>
+
+									</div>
+									<div class="tab-pane" id="type">
+										<h4 class="info-text">Choose your sports that your would like to train</h4>
+										<div class="row">
+
+											<div id="tagBoxContainer" ng-model="tagBox"></div>
+
+										</div>
+										<br />
+										
+									</div>
+									<div class="tab-pane" id="facilities">
+										<h4 style=" text-align: center;padding-bottom: -6%;">Please fill the personal training time </h4>
+
+										<center><h3><small>Select Training Time</small></h3></center>
+
+										
+										<div class="row" align="center">
+
+											<label class="checkbox-inline">
+												<input type="checkbox" value="" ng-model="Morning">Morning
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" value="" ng-model="Noon">Noon
+											</label>
+											<label class="checkbox-inline">
+												<input type="checkbox" value="" ng-model="Evening">Evening
+											</label>
+										</div>
+
+									</div>
+									<div class="tab-pane" id="Photo">
+										<h4 class="info-text">Upload Your Photo. </h4>
+
+										<div class="row" ng-model="Photosrc">
+
+
+											<div id="UserPhoto"> <h3 style="margin-left:20%;"> Thanks {{user.FirstName}} your photo Uploaded sucssesfully</h3></div>
+
+
+
+											<div id="fileUploaderContainer"></div>
+
+
+										</div>
+
+									</div>
+									<div class="tab-pane" id="description">
+										<div class="row">
+											<h4 class="info-text"> Write about yourself </h4>
+											<div class="col-sm-6 col-sm-offset-1">
+												<div class="form-group">
+													<label>About you</label>
+													<textarea ng-model="Description" class="form-control" placeholder="" rows="9">
+
+											</textarea>
+												</div>
+											</div>
+											<div class="col-sm-4">
+												<div class="form-group">
+													<label>Example</label>
+													<p class="description">"Im looking for Training a lovely people whos like to practice and get in good shape"</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="wizard-footer">
+									<div class="pull-right">
+										<input type='button' class='btn btn-next btn-fill btn-success btn-wd btn-sm' name='next' value='Next' />
+										<input ng-click="clicked()" type='button' class='btn btn-finish btn-fill btn-success btn-wd btn-sm' value='Finish' />
+										<div ng-show="Finish" ng-model="Finish">
+											<i class="fa fa-spinner fa-spin" style="margin-left: 41%;font-size: 24px; margin-top: 7%;"></i>
+										</div>
+
+									</div>
+									<div class="pull-left">
+										<input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</form>
+						</div>
+					</div> <!-- wizard container -->
+				</div>
+			</div> <!-- row -->
+		</div> <!--  big container -->
+
+
+	</div>
+
+
+	<script>
+		$("#UserPhoto").hide();
+		 $.get("http://localhost:58948/api/trainers/@TrainerId", function init(user) {
+
+		$(function () {
+			$("#fileUploaderContainer").dxFileUploader({
+				name: "file",
+				uploadMode: "instantly",
+				multiple: false,
+				accept: "*",
+				value: [],
+				onUploaded: function (e) {
+					$("#UserPhoto").show();},
+				uploadHeaders: { id: user.Id,train:"train"},
+				uploadUrl: "http://localhost:58948/api/PhotoUpload"
+
+			});
+			 })
+		});
+
+	</script>
+
+	<script>
+		$(function () {
+			$("#tagBoxContainer").dxTagBox({
+				dataSource: "http://localhost:58948/api/FavoriteSports",
+				//valueExpr: 'id',
+				displayExpr: 'DropdownData',
+				searchEnabled: true
+			});
+		});
+	</script>
+
+	<script src="~/Scripts/Maps/SearchLocation.js"></script>
+
+	<script>
+		var app = angular.module('wizardApp', []);
+
+		app.controller('wizardCtrl', function ($scope, $http) {
+
+			$http.get("http://localhost:58948/api/trainers/@TrainerId").then(function (response) {
+				//getting data tru an object
+				$scope.user = response.data;
+				var TrainerObj = $scope.user;
+
+				//print data to console
+				console.log("user", TrainerObj);
+
+
+				//put the Updated user content into Mlab -- users dataBase
+
+				$scope.clicked = function myfunction() {
+
+					$http.get("http://localhost:58948/api/trainers/@TrainerId").then(function (response) {
+
+						var userObjUpdated = response.data;
+
+
+
+					//ng show the spinner
+					$scope.Finish = true;
+
+					var SelectedTagBoxItems = $("#tagBoxContainer").dxTagBox("instance").option("selectedItems");
+
+					var selectedList = [];
+
+					for (var key in SelectedTagBoxItems) {
+
+						var obj = SelectedTagBoxItems[key];
+						console.log(obj.DropdownData);
+						selectedList.push(obj.DropdownData);
+					};
+
+					console.log("List", selectedList);
+
+
+
+					console.log("Preferences", SelectedTagBoxItems);
+					//Updating inner Object data After user Click
+						userObjUpdated.FavoriteSports = selectedList;
+						userObjUpdated.location = UserLocation;
+						userObjUpdated.Noon = $scope.Noon;
+						userObjUpdated.Evening = $scope.Evening;
+						userObjUpdated.Morning = $scope.Morning;
+						userObjUpdated.Description = $scope.Description;
+
+						$http.put("http://localhost:58948/api/trainers", userObjUpdated).then(function (response) {
+							console.log(response.status);
+
+
+
+
+							window.location.href = "http://localhost:58948/TrainerLogin/Index";
+
+					});
+
+
+
+
+					});
+
+				}
+
+
+			});
+
+		});
+
+	</script>
+
+
+
+
+
+	<!-- Scrips for Maps-->
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV6Zmi60-AGfLtqBgbMSsbEeyVlLWJM_s&libraries=places&callback=initMap"
+			async defer></script>
+
+
+</body>
+<!--   Core JS Files   -->
+
+<script src="~/Content/x-bootstrap-wizard-v1.1.1/assets/js/bootstrap.min.js"></script>
+<script src="~/Content/x-bootstrap-wizard-v1.1.1/assets/js/jquery.bootstrap.wizard.js"></script>
+<!--  Plugin for the Wizard -->
+<script src="~/Content/x-bootstrap-wizard-v1.1.1/assets/js/gsdk-bootstrap-wizard.js"></script>
+
+<script src="~/Content/x-bootstrap-wizard-v1.1.1/assets/js/jquery.validate.min.js"></script>
+</html>

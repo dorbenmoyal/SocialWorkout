@@ -16,27 +16,38 @@ namespace SocialWorkout.Controllers
         {
             //Creating new userCTRL for updating IMGsrc for spesific user
             var usersCTRL = new UsersController();
+            var TrainersCTRL = new TrainersController();
 
             HttpPostedFile file = HttpContext.Current.Request.Files["file"];
 
 
             string userId = HttpContext.Current.Request.Headers["id"];
+            string Trainer = HttpContext.Current.Request.Headers["train"];
 
 
-          
 
-                // Saves the file name
+
+            // Saves the file name
             string fileName = userId+file.FileName;
 
+            if (Trainer == null) { 
             var user = usersCTRL.Get(userId);
 
             user.ImgSrc = fileName;
 
             usersCTRL.Put(user);
+            }
+            else
+            {
+                var trainer = TrainersCTRL.Get(userId);
+                trainer.ImgSrc = fileName;
+                TrainersCTRL.Put(trainer);
+
+            }
 
 
-                // Specifies the target location for the uploaded files
-                string targetLocation = HttpContext.Current.Server.MapPath("~/Content/UsersPhotos/");
+            // Specifies the target location for the uploaded files
+            string targetLocation = HttpContext.Current.Server.MapPath("~/Content/UsersPhotos/");
 
 
         

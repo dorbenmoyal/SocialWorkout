@@ -39,13 +39,23 @@
 		.dx-scrollable-wrapper {
 			background-color: white;
 		}
+		.dx-selectbox-popup {
+			display: none !important;
+		}
+		
 	</style>
 
 	<style>
 		:root {
 			--loginLabelBackgroundColor: #2c3338;
 		}
+
+		.login label, .login input[type='text'], .login input[type='number'], .login input[type='email'], .login input[type='password'], .login input[type='submit'] {
+			border-radius: var(--loginBorderRadus);
+			padding: 0.5rem;
+		}
 	</style>
+
 
 </head>
 
@@ -97,6 +107,14 @@
 			</div>
 
 
+			<div class="form__field">
+				<label>
+					<i class="material-icons">
+						attach_money
+					</i>
+				</label>
+				<input type="number" name="Price" class="form__input" placeholder="Price Per Practice in Dolars $" required>
+			</div>
 
 
 
@@ -110,16 +128,21 @@
 				<label class="radio-inline"><input type="radio" name="Gender" value="Female">Female</label>
 
 			</div>
-			<div class="form__field">
+
+
+		
+			@*<div class="row">
+				<p style="padding-left:8px; color:white;">Your Sports</p>
+				<div name="FavoriteSports"  id="tagBoxContainer" ng-model="tagBox"></div>
+
+			</div>*@
+
+
+			@*<div class="form__field">
 				<label><i class="material-icons">notes</i></label>
 				<input type="text" name="Description" class="form__input" style="height: 15%;" placeholder="Description">
-			</div>
+			</div>*@
 
-			<div class="row">
-
-				<div id="tagBoxContainer" ng-model="tagBox"></div>
-
-			</div>
 
 
 
@@ -134,7 +157,7 @@
 
 
 
-		<p class="text--center" style="    color: #737373;">Already a member? <a href="/Login/index">Login now</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
+		<p class="text--center" style="    color: #737373;">Already a member? <a href="/TrainerLogin/index">Login now</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
 
 	</div>
 
