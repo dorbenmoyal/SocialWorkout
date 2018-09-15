@@ -1,0 +1,146 @@
+﻿@using SocialWorkout.Models;
+@model SocialWorkout.Models.ControlPanelViewModel
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<!-- Latest compiled and minified JavaScript -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="~/Content/ControlPannel.css" rel="stylesheet" />
+
+</head>
+
+<style>
+
+	.GROUPOFBUTTONS {
+		margin-left: 36%;
+	}
+
+</style>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">Admin Panel</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-user">&nbsp;</span>Hello Admin</a></li>
+				<li class="active"><a title="View Website" href="#"><span class="glyphicon glyphicon-globe"></span></a></li>
+				<li><a href="/">LogOut</a></li>
+			</ul>
+
+		</div>
+	</div>
+</nav>
+<div class="container-fluid">
+	<div class="col-md-3">
+
+		<div id="sidebar">
+			<div class="container-fluid tmargin">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search..." />
+					<span class="input-group-btn">
+						<button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+					</span>
+				</div>
+			</div>
+
+			<ul class="nav navbar-nav side-bar">
+				<li class="side-bar tmargin"><a href="#"><span class="glyphicon glyphicon-list">&nbsp;</span>Dashboard</a></li>
+
+
+
+				<li class="side-bar"><a href="/ControlPanel/Statistics"><span class="glyphicon glyphicon-signal">&nbsp;</span>Statistics</a></li>
+				<li class="side-bar"><a href="#"><span class="glyphicon glyphicon-cog">&nbsp;</span>Settings</a></li>
+
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="GROUPOFBUTTONS">
+<div class="btn-group">
+	<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users</button>
+	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+		<li><a href="/user/index">List</a></li>
+		<li><a href="/user/create">Create</a></li>
+	</ul>
+</div>
+<div class="btn-group">
+	<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Comments</button>
+	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+		<li><a href="/comment">List</a></li>
+		<li><a href="/comment/create">Create</a></li>
+	</ul>
+</div>
+<div class="btn-group">
+	<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact Us</button>
+	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+		<li><a href="/ContactUs/ShowAllContactFromUser">List</a></li>
+		<li><a href="/ContactUs">Create(for tests)</a></li>
+	</ul>
+</div>
+<div class="btn-group">
+	<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Attractions</button>
+	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+		<li><a href="/attraction">List</a></li>
+		<li><a href="/attraction/create">Create</a></li>
+	</ul>
+</div>
+
+</div>
+<div class="col-md-8" style="
+	margin-left: 22%;
+	margin-top: 3%;
+">
+	<div class="panel panel-default">
+		<div class="panel-heading" style="background-color:  #576b6a;">
+			<h3 class="panel-title">Website Overview</h3>
+		</div>
+		<div class="panel-body">
+			<div class="col-md-4">
+				<div class="well dash-box">
+					<h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span>@Model.Users.Count() </h2>
+					<h4>Users</h4>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="well dash-box">
+					<h2><span class="	glyphicon glyphicon-certificate" aria-hidden="true"></span>@Model.events.Count()</h2>
+					<h4>Events</h4>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="well dash-box">
+					<h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>@Model.Trainers.Count()</h2>
+					<h4>Trainers</h4>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</html>

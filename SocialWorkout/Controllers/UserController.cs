@@ -13,7 +13,7 @@ namespace SocialWorkout.Controllers
         public ActionResult Index()
         {
             var Users = Context.Users.FindAll();
-            return View("AllUsers", Users);
+            return View(Users);
         }
 
         public ActionResult Create()

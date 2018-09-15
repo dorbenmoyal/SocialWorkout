@@ -291,6 +291,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ControlPanelController.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -310,7 +311,7 @@
     <Compile Include="Models\EventLine.cs" />
     <Compile Include="Models\MailBox.cs" />
     <Compile Include="Models\Preferens.Cs" />
-    <Compile Include="Models\PreferenseUserViewModel.cs" />
+    <Compile Include="Models\ControlPanelViewModel.cs" />
     <Compile Include="Models\Trainer.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -318,6 +319,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap1.css" />
+    <Content Include="Content\ControlPannel.css" />
     <Content Include="Content\Filterable-Country-Picker-niceCountryInput\niceCountryInput.css" />
     <Content Include="Content\Filterable-Country-Picker-niceCountryInput\niceCountryInput.js" />
     <Content Include="Content\htmlBack.html" />
@@ -534,12 +537,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
-    <Content Include="Views\User\AllUsers.cshtml" />
     <Content Include="Views\User\SignUp.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
-    <Content Include="Views\User\Edit.cshtml" />
-    <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\Home\tryAngular.cshtml" />
     <Content Include="Views\Login\Wizard.cshtml" />
     <Content Include="Views\Home\tryDX.cshtml" />
@@ -559,6 +559,11 @@
     <Content Include="Views\Trainer\Create.cshtml" />
     <Content Include="Views\TrainerLogin\WizardTrainer.cshtml" />
     <Content Include="Views\TrainerLogin\Index.cshtml" />
+    <Content Include="Views\ControlPanel\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
