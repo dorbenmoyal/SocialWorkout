@@ -8,19 +8,21 @@ using SocialWorkout.Models;
 
 namespace SocialWorkout.Controllers
 {
+
+    [Filters.AutorizeAdmin]
+
     public class ControlPanelController : Controller
     {
+     
+
+
         private readonly DBcontext database = new DBcontext();
 
         
         public ActionResult Index()
         {
-            if (Session["Admin"] == null)
-            {
-                return RedirectToAction("InvalidLogin", "Login");
-            }
-
-
+         
+        
 
             ControlPanelViewModel CPVM = new ControlPanelViewModel();
 

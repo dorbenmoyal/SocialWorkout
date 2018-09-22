@@ -291,6 +291,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ContactUsCController.cs" />
+    <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\ControlPanelController.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -301,9 +303,11 @@
     <Compile Include="Controllers\TrainersController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Filters\AutorizeAdmin.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContactUs.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\DBcontext.cs" />
     <Compile Include="Models\Data.cs" />
@@ -320,6 +324,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap1.css" />
+    <Content Include="Content\ContactUs.css" />
     <Content Include="Content\ControlPannel.css" />
     <Content Include="Content\Filterable-Country-Picker-niceCountryInput\niceCountryInput.css" />
     <Content Include="Content\Filterable-Country-Picker-niceCountryInput\niceCountryInput.js" />
@@ -406,6 +411,7 @@
     <Content Include="Content\paper-dashboard-2-html-v2.0.0\nucleo-icons.html" />
     <Content Include="Content\popUp.css" />
     <Content Include="Content\ProgressBar.css" />
+    <Content Include="Content\Unauthorized.css" />
     <Content Include="Content\UsersPhotos\profileTest.png" />
     <Content Include="Content\UsersPhotos\ThisExample.PNG" />
     <Content Include="Content\x-bootstrap-wizard-v1.1.1\assets\css\bootstrap.min.css" />
@@ -564,6 +570,14 @@
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\ContactUsC\Index.cshtml" />
+    <Content Include="Views\ContactUsC\Edit.cshtml" />
+    <Content Include="Views\ContactUsC\Delete.cshtml" />
+    <Content Include="Views\Trainer\Index.cshtml" />
+    <Content Include="Views\Trainer\Edit.cshtml" />
+    <Content Include="Views\Trainer\Delete.cshtml" />
+    <Content Include="Views\Home\Unauthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

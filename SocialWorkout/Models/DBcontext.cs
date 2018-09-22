@@ -70,6 +70,15 @@ namespace SocialWorkout.Models
                 return events;
             }
         }
+        public MongoCollection<ContactUs> ContactUs
+        {
+            get
+            {
+                var ContactUs = Database.GetCollection<ContactUs>("ContactUs");
+
+                return ContactUs;
+            }
+        }
     }
 
 }

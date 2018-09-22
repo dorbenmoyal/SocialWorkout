@@ -10,6 +10,7 @@ namespace SocialWorkout.Controllers
 
         private readonly DBcontext Context = new DBcontext();
 
+        [Filters.AutorizeAdmin]
         public ActionResult Index()
         {
             var Users = Context.Users.FindAll();

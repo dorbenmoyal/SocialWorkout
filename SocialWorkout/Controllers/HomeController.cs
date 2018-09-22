@@ -195,5 +195,17 @@ namespace SocialWorkout.Controllers
 
             return View(AllEvents);
         }
+        public ActionResult ContactUs()
+        {
+            
+
+            return View();
+        }
+
+        public ActionResult Unauthorized()
+        {
+
+            return View();
+        }
     }
 }
