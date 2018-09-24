@@ -99,6 +99,22 @@ namespace SocialWorkout.Controllers
         }
 
 
+        public ActionResult Trainers()
+        {
+            var Trainers = Context.Trainers.FindAll();
+
+
+            return View(Trainers);
+        }
+        public ActionResult TrainerDetails(string Id)
+        {
+            var Trainer = Context.Trainers.FindOneById(new ObjectId(Id));
+
+            return View(Trainer);
+
+        }
+
+
         public ActionResult ShowMesagges(string uid)
         {
             var UsersList = Context.Users.FindAll();

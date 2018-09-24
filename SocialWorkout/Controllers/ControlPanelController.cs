@@ -38,5 +38,26 @@ namespace SocialWorkout.Controllers
 
             return View(CPVM);
         }
+
+
+       public ActionResult Statistics()
+        {
+
+            ControlPanelViewModel CPVM = new ControlPanelViewModel();
+
+            CPVM.Users = database.Users.FindAll();
+
+            CPVM.Trainers = database.Trainers.FindAll();
+
+            CPVM.events = database.Events.FindAll();
+
+
+
+
+            return View(CPVM);
+
+
+
+        }
     }
 }

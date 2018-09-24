@@ -1,0 +1,100 @@
+﻿@model IEnumerable<SocialWorkout.Models.Trainer>
+
+
+
+
+@{
+	ViewBag.Title = "Trainers";
+	Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+
+
+<head>
+
+
+	<!--     Fonts and icons     -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+	<!-- CSS Files -->
+	<link href="~/Content/paper-dashboard-2-html-v2.0.0/assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/Content/paper-dashboard-2-html-v2.0.0/assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+
+
+
+	<style>
+
+
+		i.nc-icon.nc-bank {
+			color: #66615B !important;
+		}
+
+		i.nc-icon.nc-spaceship {
+			color: red !important;
+		}
+
+		p {
+			color: #66615B !important;
+		}
+	</style>
+</head>
+
+
+
+
+<header>
+	<div class="container">
+
+		<div class="jumbotron" style="     background-image: url(/Content/Images/bkg_fitness.jpg);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat; background-image:url(/Content/Images/bkg_fitness.jpg)">
+			<center>
+				<h2 style="font-size: 81px;color: aliceblue;font-family: -webkit-pictograph;">Trainers</h2>
+			</center>
+			<p style="color:aliceblue !important; text-align:center;">
+				Choose your trainer, the list below let you choose from our best trainers,
+
+			</p>
+		</div>
+</header>
+
+
+
+
+
+<div class="my-3 p-3 bg-white rounded box-shadow">
+	<h6 class="border-bottom border-gray pb-2 mb-0">
+		Trainers
+	</h6>
+
+	@foreach (var item in Model)
+	{
+		<div class="media text-muted pt-3">
+			<img src="~/Content/UsersPhotos/@item.ImgSrc" alt="32x32" class="mr-2 rounded" style="width: 32px; height: 32px;" src="" data-holder-rendered="true">
+			<p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+				<a href="TrainerDetails/@item.Id">	<strong class="d-block text-gray-dark">@Html.DisplayFor(modelItem => item.FirstName) (@Html.DisplayFor(modelItem => item.Age))</strong></a>
+				@Html.DisplayFor(modelItem => item.Description)
+
+
+				<div>
+					Expert In  : @foreach (var sport in item.FavoriteSports)
+					{<span> @sport  </span>}
+				</div>
+
+
+
+		</div>
+		<div> <b>@item.Price$</b>  </div>
+	}
+	<small class="d-block text-right mt-3">
+
+	</small>
+</div>
+
+
+
+
+
+
+
+

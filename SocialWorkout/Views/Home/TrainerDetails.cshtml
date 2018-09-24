@@ -1,0 +1,152 @@
+﻿@model SocialWorkout.Models.Trainer
+@{
+	ViewBag.Title = "TrainerDetails";
+	Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+
+<head>
+	<link href="~/Content/UICard.css" rel="stylesheet" />
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="~/Content/popUp.css" rel="stylesheet" />
+
+</head>
+
+<style>
+
+
+	i.nc-icon.nc-bank {
+		color: #66615B !important;
+	}
+
+	i.nc-icon.nc-spaceship {
+		color: red !important;
+	}
+
+	p {
+		color: #66615B !important;
+	}
+</style>
+
+
+
+<div class="card" style="    margin-top: 30%;">
+	<div class="box">
+		<div class="img">
+			<img src="~/Content/UsersPhotos/@Model.ImgSrc">
+		</div>
+		<h2>
+			@Model.FirstName @Model.LastName<br><span>
+				@foreach (var item in Model.FavoriteSports)
+				{@item <span></span>}
+			</span>
+		</h2>
+		<p>
+			@Model.Description
+		</p>
+		<span>
+			<ul>
+				<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+			</ul>
+		</span>
+		<h2>Price : @Model.Price$</h2>
+		<button type="button" class="btn btn-success">Join @Model.FirstName</button>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="getbootstrap">Send @Model.FirstName Message</button>
+	</div>
+</div>
+
+
+<!-- Message-->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content" id="ModalContent">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">New message to @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+
+						<label for="recipient-name" class="col-form-label">Recipient:</label>
+						<input readonly type="text" class="form-control" id="recipient-name" value="@Html.DisplayFor(model => model.Email)">
+					</div>
+					<div class="form-group">
+						<label for="message-text" class="col-form-label">Message:</label>
+						<textarea class="form-control" id="message-text"></textarea>
+
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<div class="popup">
+					<span class="popuptext" id="myPopup2"> YourMessage sent to @Model.FirstName </span>
+				</div>
+				<button type="button" id="SendNOW" class="btn btn-primary">Send message</button>
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- End Message Modal-->
+
+</div>
+
+
+<script>
+	document.getElementById("userName").addEventListener("click", function () {
+		var userName = document.getElementById("userName").value;
+		var userNameID = document.getElementById("userNameID").value;
+
+		sessionStorage.setItem(userNameID, userName);
+
+		var popup = document.getElementById("myPopup");
+		popup.classList.toggle("show");
+	});
+
+</script>
+
+
+<script>
+
+		document.getElementById("SendNOW").addEventListener("click", function () {
+
+			var TextMassage = document.getElementById("message-text").value;
+
+
+
+
+			var fromUID = '@Session["Customer"].ToString()';
+
+			var ToUID = '@Model.Id';
+
+			var SendingObject = { massage: TextMassage, SenderID: fromUID, ReciverID : ToUID};
+
+			var url = "http://localhost:58948/api/Users/ReciveMassage";
+
+			$.ajax({
+				type: "POST",
+				url: url,
+				data: JSON.stringify(SendingObject),
+				dataType: "json",
+				contentType: "application/json"
+			});
+
+			var popup = document.getElementById("myPopup2");
+			popup.classList.toggle("show");
+		}
+
+			);
+
+</script>

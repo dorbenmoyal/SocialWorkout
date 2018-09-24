@@ -113,16 +113,11 @@
 							<p>Contact Us</p>
 						</a>
 					</li>
-					<li>
-						<a href="./typography.html">
-							<i class="nc-icon nc-caps-small"></i>
-							<p>Typography</p>
-						</a>
-					</li>
+		
 					<li class="active-pro">
-						<a href="./upgrade.html">
+						<a href="http://localhost:58948/Home/Trainers">
 							<i class="nc-icon nc-spaceship"></i>
-							<p>Upgrade to PRO</p>
+							<p>Trainers</p>
 						</a>
 					</li>
 				</ul>
@@ -148,19 +143,11 @@
 						<span class="navbar-toggler-bar navbar-kebab"></span>
 					</button>
 					<div class="collapse navbar-collapse justify-content-end" id="navigation">
-						<form>
-							<div class="input-group no-border">
-								<input type="text" value="" class="form-control" placeholder="Search">
-								<div class="input-group-append">
-									<div class="input-group-text">
-										<i class="nc-icon nc-zoom-split"></i>
-									</div>
-								</div>
-							</div>
-						</form>
+
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a class="nav-link btn-magnify" href="#pablo">
+								<a class="nav-link btn-magnify" href="http://localhost:58948/">
+									LogOut
 									<i class="nc-icon nc-layout-11"></i>
 									<p>
 										<span class="d-lg-none d-md-block">Stats</span>
@@ -175,9 +162,8 @@
 									</p>
 								</a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-									<a class="dropdown-item" href="#">Action</a>
-									<a class="dropdown-item" href="#">Another action</a>
-									<a class="dropdown-item" href="#">Something else here</a>
+									<a class="dropdown-item" href="http://localhost:58948/Home/Events">Events for me</a>
+
 								</div>
 							</li>
 							<li class="nav-item">
@@ -201,14 +187,40 @@
 			</div> -->
 
 
+
+
 			<div class="content">
+
+				<!-- Header-->
+
+
+				<header>
+					<div class="container">
+
+						<div class="jumbotron" style="     background-image: url(/Content/Images/team2.jpeg);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat; background-image:url(/Content/Images/team2.jpeg)">
+							<center>
+								<h2 style="font-size: 81px;color: aliceblue;font-family: -webkit-pictograph;"><b>S</b>ocial Workout</h2>
+							</center>
+							<p style="color:aliceblue !important; text-align:center;">
+								Welcome to <b>S</b>ocial Workout App, below you can see suggestions and accuracy of the matched users,
+								the <span style="color:blue; background-color:white;">Blue</span> bar is showing the percent of the users accuracy
+								that mathed to your profile.
+
+							</p>
+						</div>
+				</header>
+
+
 				<section ng-app="IndexApp">
 
 					<div ng-controller="IndexCtrl">
 
 						<main role="main" class="container">
 
-						
+
 
 							<div class="my-3 p-3 bg-white rounded box-shadow">
 								<h6 class="border-bottom border-gray pb-2 mb-0">
@@ -223,8 +235,8 @@
 											<a href="details/@item.Id">	<strong class="d-block text-gray-dark">@Html.DisplayFor(modelItem => item.FirstName) (@Html.DisplayFor(modelItem => item.Age))</strong></a>
 											@Html.DisplayFor(modelItem => item.preferens.Description)
 
-											
-				
+
+
 
 											<div class="progress" style="    width: 36%;">
 												<div class="progress-bar progress-bar-striped active" role="progressbar"
@@ -233,12 +245,12 @@
 												</div>
 											</div>
 
-										
-</div>
+
+									</div>
 
 								}
 								<small class="d-block text-right mt-3">
-									<a href="#">All updates</a>
+
 								</small>
 							</div>
 
@@ -259,7 +271,7 @@
 								Sport Events Of the week
 							</h6>
 
-						
+
 							<div id="accordion">
 								<div class="card">
 									<div class="card-header" id="headingOne">
@@ -272,10 +284,10 @@
 
 									<div id="collapseOne" class="collapse in" aria-labelledby="headingOne" data-parent="#accordion">
 										<div class="card-body">
-											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+										Every sunday and monday we go out with the friends who like to run and never get tired :-)
 											<button id="Attending1" type="button" class="btn btn-light">Attending</button>
-										
-									
+
+
 										</div>
 									</div>
 								</div>
@@ -289,9 +301,9 @@
 									</div>
 									<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
 										<div class="card-body">
-											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+											Every saturday we collect team of 11 players to play socer, herry up to register !
 											<button id="Attending2" type="button" class="btn btn-light">Attending</button>
-										
+
 										</div>
 									</div>
 								</div>
@@ -305,14 +317,15 @@
 									</div>
 									<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
 										<div class="card-body">
-											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+										Adi is what your looking for if talking about SWIMMING, the group is 7 peoples and go swimming every monday and friday,
+											so if you like swimming dont miss it out.
 											<button id="Attending3" type="button" class="btn btn-light">Attending</button>
-										
+
 										</div>
 									</div>
 								</div>
 							</div>
-						
+
 						</div>
 
 
@@ -320,7 +333,7 @@
 
 
 				</section>
-				
+
 			</div>
 		</div>
 	</div>
