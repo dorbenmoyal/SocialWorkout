@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver.Builders;
 using SocialWorkout.Models;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace SocialWorkout.Controllers
@@ -35,7 +36,7 @@ namespace SocialWorkout.Controllers
 
         public ActionResult Edit(string Id)
         {
-            var Trainer = Context.Users.FindOneById(new ObjectId(Id));
+            var Trainer = Context.Trainers.FindOneById(new ObjectId(Id));
             return View(Trainer);
         }
 
@@ -78,9 +79,97 @@ namespace SocialWorkout.Controllers
             return View();
         }
 
-        public ActionResult Tryto()
+        public ActionResult Home(string uid)
         {
-            return View();
+            List<User> UpdatedUsers = new List<User>();
+
+
+            Trainer currentTrainer = Context.Trainers.FindOneById(new ObjectId(uid));
+
+            var UsersList = Context.Users.FindAll();
+
+            if (currentTrainer.UsersJoined != null) {
+
+            foreach (var user in UsersList)
+            {
+
+                if (currentTrainer.UsersJoined.Contains(user.Id))
+                {
+                    UpdatedUsers.Add(user);
+                }
+
+            }
+
+
+            }
+
+
+            return View(UpdatedUsers);
+        }
+
+        public ActionResult ShowMesagges(string uid)
+        {
+            
+            var Trainer = Context.Trainers.FindOneById(new ObjectId(uid));
+
+
+            if (Trainer.mailBox == null || Trainer.mailBox.UserMessages.Count == 0)
+            {
+                return View("MailBoxEmpty");
+            }
+
+
+            List<Message> UserMessages = Trainer.mailBox.UserMessages;
+
+
+
+
+            return View(UserMessages);
+        }
+
+        public ActionResult Events()
+        {
+            var AllEvents = Context.Events.FindAll();
+
+            return View(AllEvents);
+        }
+
+        public ActionResult DeleteMessage(string Massage, string SenderUserID)
+        {
+            var Trainers = Context.Trainers.FindAll();
+            string currentUserMail = null;
+            foreach (var user in Trainers)
+            {
+                var mailBox = user.mailBox;
+                if (mailBox != null)
+                {
+                    var mailBoxMessagesList = mailBox.UserMessages;
+                    foreach (var message in mailBoxMessagesList)
+                    {
+                        if (message.Massage == Massage && message.SenderUserID == SenderUserID)
+                        {
+                            mailBoxMessagesList.Remove(message);
+                            user.mailBox.UserMessages = mailBoxMessagesList;
+                            Context.Trainers.Save(user);
+                            currentUserMail = user.Id;
+                            break;
+                        }
+                    }
+                }
+
+            }
+            return RedirectToAction("ShowMesagges", new { uid = currentUserMail });
+
+        }
+
+        public ActionResult Details(string Id)
+        {
+            var User = Context.Users.FindOneById(new ObjectId(Id));
+
+            return View(User);
+
         }
     }
+
+
 }

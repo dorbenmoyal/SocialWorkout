@@ -587,6 +587,12 @@
     <Content Include="Views\ControlPanel\Statistics.cshtml" />
     <Content Include="Views\Home\Trainers.cshtml" />
     <Content Include="Views\Home\TrainerDetails.cshtml" />
+    <Content Include="Views\Trainer\Home.cshtml" />
+    <Content Include="Views\Trainer\ShowMesagges.cshtml" />
+    <Content Include="Views\Shared\_DashBoardLayout2.cshtml" />
+    <Content Include="Views\Trainer\MailBoxEmpty.cshtml" />
+    <Content Include="Views\Trainer\Events.cshtml" />
+    <Content Include="Views\Trainer\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

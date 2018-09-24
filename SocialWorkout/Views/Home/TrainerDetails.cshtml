@@ -56,7 +56,7 @@
 			</ul>
 		</span>
 		<h2>Price : @Model.Price$</h2>
-		<button type="button" class="btn btn-success">Join @Model.FirstName</button>
+		<button id="join" type="button" class="btn btn-success">Join @Model.FirstName</button>
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="getbootstrap">Send @Model.FirstName Message</button>
 	</div>
 </div>
@@ -133,7 +133,7 @@
 
 			var SendingObject = { massage: TextMassage, SenderID: fromUID, ReciverID : ToUID};
 
-			var url = "http://localhost:58948/api/Users/ReciveMassage";
+			var url = "http://localhost:58948/api/Users/ReciveMassageTrianer";
 
 			$.ajax({
 				type: "POST",
@@ -148,5 +148,38 @@
 		}
 
 			);
+
+</script>
+
+<script>
+
+	document.getElementById("join").addEventListener("click", function () {
+
+	
+			var fromUID = '@Session["Customer"].ToString()';
+
+			var ToUID = '@Model.Id';
+
+			var SendingObject = { massage: "nothing", SenderID: fromUID, ReciverID : ToUID};
+
+		var url = "http://localhost:58948/api/Users/JoinTrianer";
+			
+
+
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: JSON.stringify(SendingObject),
+			dataType: "json",
+			contentType: "application/json"
+		});
+
+
+
+
+
+	});
+
+
 
 </script>

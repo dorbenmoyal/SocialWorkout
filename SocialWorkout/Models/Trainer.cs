@@ -42,6 +42,10 @@ namespace SocialWorkout.Models
 
         public string ImgSrc { get; set; }
 
+        public MailBox mailBox { get; set; }
+
+        public List <string> UsersJoined { get; set; }
+
 
     }
 }

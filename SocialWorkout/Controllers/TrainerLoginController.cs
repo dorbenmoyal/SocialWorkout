@@ -51,7 +51,7 @@ namespace SocialWorkout.Controllers
 
             Session.Add("Trainer", trainer.Id);
 
-            return RedirectToAction("Index", "Home", new { uid = trainer.Id });
+            return RedirectToAction("Home", "Trainer", new { uid = trainer.Id });
 
         }
 

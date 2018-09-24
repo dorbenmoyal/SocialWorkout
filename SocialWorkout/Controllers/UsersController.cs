@@ -49,6 +49,102 @@ namespace SocialWorkout.Controllers
 
         }
 
+        [HttpPost]
+        [Route("api/Users/ReciveMassageTrianer")]
+        public void ReciveMassageTrainer(MailMassageContent mail)
+        {
+
+            User fromUser = Context.Users.FindOneById(new ObjectId(mail.SenderID));
+            Trainer ToUser = Context.Trainers.FindOneById(new ObjectId(mail.ReciverID));
+
+            Message m = new Message() { Massage = mail.Massage, SenderUserID = fromUser.Id, SenderUserEmail = fromUser.Email, SenderUserName = fromUser.FirstName };
+
+            if (ToUser.mailBox == null)
+            {
+
+                ToUser.mailBox = new MailBox();
+
+                List<Message> messageList = new List<Message>();
+
+                messageList.Add(m);
+
+                ToUser.mailBox.UserMessages = messageList;
+
+                Context.Trainers.Save(ToUser);
+
+            }
+            else
+            {
+                ToUser.mailBox.UserMessages.Add(m);
+                Context.Trainers.Save(ToUser);
+
+            }
+
+        }
+
+
+        [HttpPost]
+        [Route("api/Users/ReciveMassageFromTrainerToUser")]
+        public void ReciveMassageFromTrainerToUser(MailMassageContent mail)
+        {
+
+            Trainer fromUser = Context.Trainers.FindOneById(new ObjectId(mail.SenderID));
+            User ToUser = Get(mail.ReciverID);
+
+            Message m = new Message() { Massage = mail.Massage, SenderUserID = fromUser.Id, SenderUserEmail = fromUser.Email, SenderUserName = fromUser.FirstName };
+
+            if (ToUser.mailBox == null)
+            {
+
+                ToUser.mailBox = new MailBox();
+
+                List<Message> messageList = new List<Message>();
+
+                messageList.Add(m);
+
+                ToUser.mailBox.UserMessages = messageList;
+
+                Context.Users.Save(ToUser);
+
+            }
+            else
+            {
+                ToUser.mailBox.UserMessages.Add(m);
+                Context.Users.Save(ToUser);
+
+            }
+
+        }
+
+        [HttpPost]
+        [Route("api/Users/JoinTrianer")]
+        public void JoinTrianer(MailMassageContent mail)
+        {
+            User fromUser = Context.Users.FindOneById(new ObjectId(mail.SenderID));
+            Trainer ToUser = Context.Trainers.FindOneById(new ObjectId(mail.ReciverID));
+
+            if (ToUser.UsersJoined == null)
+            {
+                ToUser.UsersJoined = new List<string>();
+
+                ToUser.UsersJoined.Add(fromUser.Id);
+
+                Context.Trainers.Save(ToUser);
+
+            }
+            else
+            {
+                if (!ToUser.UsersJoined.Contains(fromUser.Id)) { 
+
+                ToUser.UsersJoined.Add(fromUser.Id);
+                Context.Trainers.Save(ToUser);
+
+                }
+            }
+
+
+        }
+
 
         // GET: api/Users
         [HttpGet]
