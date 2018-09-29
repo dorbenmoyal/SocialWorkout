@@ -38,6 +38,8 @@ namespace SocialWorkout.Models
 
         public MailBox mailBox { get; set; }
 
+        public RootGoals Goals { get; set; }
+
         
     }
 }

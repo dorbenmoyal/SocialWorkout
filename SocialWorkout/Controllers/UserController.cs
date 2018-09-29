@@ -25,8 +25,12 @@ namespace SocialWorkout.Controllers
         [HttpPost]
         public ActionResult Create(User user)
         {
+            var GOCL = new GoalsController();
+
+
             if (ModelState.IsValid)
             {
+                user.Goals = GOCL.GetRandomGoals();
                 Context.Users.Insert(user);
                 return RedirectToAction("Index", "Login");
             }

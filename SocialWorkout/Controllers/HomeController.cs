@@ -22,8 +22,17 @@ namespace SocialWorkout.Controllers
 
             List<User> UpdatedUsers = new List<User>();
             //calculate euclidean distance between user to all other users
+            var GOCL = new GoalsController();
             foreach (var CurrentUser in UsersList)
             {
+
+                if (CurrentUser.Goals == null)
+                {
+                    CurrentUser.Goals = GOCL.GetRandomGoals();
+                    Context.Users.Save(CurrentUser);
+
+                }
+
                 bool favoriteFlag = false;
                 if (CurrentUser.preferens != null)
                 {

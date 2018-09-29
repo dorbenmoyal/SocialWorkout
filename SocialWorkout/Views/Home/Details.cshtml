@@ -11,10 +11,15 @@
 	<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.1.0.min.js"></script>
 
 
+
 	<link href="~/Content/popUp.css" rel="stylesheet" />
 
 
 	<link href="~/Content/CardProfile.css" rel="stylesheet" />
+
+	<link href="~/Content/Health.css" rel="stylesheet" />
+
+
 </head>
 
 
@@ -120,6 +125,28 @@
 		   </div>
 		   </div>
 		   </div>
+
+
+		   <h1>Latest Activity</h1>
+		   <container>
+			   <div class="button">
+			   	distance km
+			   	<i class="fa fa-bicycle" aria-hidden="true"></i>
+			   	<p>@Model.Goals.goals.distance</p>
+			   </div>
+			   <div class="button">
+			   	calories Out
+			   	<i class="fa fa-fire" aria-hidden="true"></i>
+			   	<p>@Model.Goals.goals.caloriesOut</p>
+			   </div>
+		   	<div class="button">
+				   Steps
+		   		<i class="fa fa-paw" aria-hidden="true"></i>
+		   		<p>@Model.Goals.goals.steps</p>
+		   	</div>
+
+		   </container>
+
 
 
 

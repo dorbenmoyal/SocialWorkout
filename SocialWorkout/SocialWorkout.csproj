@@ -295,6 +295,7 @@
     <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\ControlPanelController.cs" />
     <Compile Include="Controllers\DataController.cs" />
+    <Compile Include="Controllers\GoalsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PhotoUploadController.cs" />
@@ -313,6 +314,7 @@
     <Compile Include="Models\Data.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventLine.cs" />
+    <Compile Include="Models\Goals.cs" />
     <Compile Include="Models\MailBox.cs" />
     <Compile Include="Models\Preferens.Cs" />
     <Compile Include="Models\ControlPanelViewModel.cs" />
@@ -330,6 +332,7 @@
     <Content Include="Content\ControlPannel.css" />
     <Content Include="Content\Filterable-Country-Picker-niceCountryInput\niceCountryInput.css" />
     <Content Include="Content\Filterable-Country-Picker-niceCountryInput\niceCountryInput.js" />
+    <Content Include="Content\Health.css" />
     <Content Include="Content\htmlBack.html" />
     <Content Include="Content\Images\bkg_fitness.jpg" />
     <Content Include="Content\Images\events-background.jpg" />
@@ -601,6 +604,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\SignUp\" />
+    <Folder Include="Views\Goals\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
