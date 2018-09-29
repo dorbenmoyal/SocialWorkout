@@ -79,6 +79,16 @@ namespace SocialWorkout.Models
                 return ContactUs;
             }
         }
+
+        public MongoCollection<Survey> Survey
+        {
+            get
+            {
+                var Survey = Database.GetCollection<Survey>("Survey");
+
+                return Survey;
+            }
+        }
     }
 
 }

@@ -316,6 +316,7 @@
     <Compile Include="Models\MailBox.cs" />
     <Compile Include="Models\Preferens.Cs" />
     <Compile Include="Models\ControlPanelViewModel.cs" />
+    <Compile Include="Models\Survey.cs" />
     <Compile Include="Models\Trainer.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -416,6 +417,7 @@
     <Content Include="Content\paper-dashboard-2-html-v2.0.0\nucleo-icons.html" />
     <Content Include="Content\popUp.css" />
     <Content Include="Content\ProgressBar.css" />
+    <Content Include="Content\RateUs.css" />
     <Content Include="Content\UICard.css" />
     <Content Include="Content\Unauthorized.css" />
     <Content Include="Content\UsersPhotos\profileTest.png" />
@@ -593,6 +595,8 @@
     <Content Include="Views\Trainer\MailBoxEmpty.cshtml" />
     <Content Include="Views\Trainer\Events.cshtml" />
     <Content Include="Views\Trainer\Details.cshtml" />
+    <Content Include="Views\Home\RateUs.cshtml" />
+    <Content Include="Views\ControlPanel\Survey.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

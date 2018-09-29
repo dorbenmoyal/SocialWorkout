@@ -98,6 +98,11 @@ namespace SocialWorkout.Controllers
             return View();
         }
 
+        public ActionResult RateUs()
+        {
+            return View();
+        }
+
 
         public ActionResult Trainers()
         {

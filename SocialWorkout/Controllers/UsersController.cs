@@ -145,7 +145,29 @@ namespace SocialWorkout.Controllers
 
         }
 
+        [HttpPost]
+        [Route("api/Users/SendServey")]
+        public void SendServey(List<int>  survey)
+        {
 
+            Survey Answers = new Survey();
+
+            var list = new List<KeyValuePair<string, int>>();
+
+            var counter = 1;
+
+            foreach (var answer in survey)
+            {
+                list.Add(new KeyValuePair<string, int>("Question." + counter, answer));
+                counter++;
+            }
+
+            Answers.Answers = list;
+
+            Context.Survey.Insert(Answers);
+
+
+        }
         // GET: api/Users
         [HttpGet]
         public IEnumerable<User> Get()

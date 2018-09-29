@@ -1,0 +1,262 @@
+﻿@Model
+@{
+	ViewBag.Title = "Survey";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+
+<style>
+
+
+	.heading {
+		font-size: 25px;
+		margin-right: 25px;
+	}
+
+	.fa {
+		font-size: 25px;
+	}
+
+	.checked {
+		color: orange;
+	}
+
+	/* Three column layout */
+	.side {
+		float: left;
+		width: 15%;
+		margin-top: 10px;
+	}
+
+	.middle {
+		float: left;
+		width: 70%;
+		margin-top: 10px;
+	}
+
+	/* Place text to the right */
+	.right {
+		text-align: right;
+	}
+
+	/* Clear floats after the columns */
+	.row:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+
+	/* The bar container */
+	.bar-container {
+		width: 100%;
+		background-color: #f1f1f1;
+		text-align: center;
+		color: white;
+	}
+
+	/* Individual bars */
+	.bar-5 {
+		width: 60%;
+		height: 18px;
+		background-color: #4CAF50;
+	}
+
+	.bar-4 {
+		width: 30%;
+		height: 18px;
+		background-color: #2196F3;
+	}
+
+	.bar-3 {
+		width: 10%;
+		height: 18px;
+		background-color: #00bcd4;
+	}
+
+	.bar-2 {
+		width: 4%;
+		height: 18px;
+		background-color: #ff9800;
+	}
+
+	.bar-1 {
+		width: 15%;
+		height: 18px;
+		background-color: #f44336;
+	}
+</style>
+
+
+<h2>Survey Statistics</h2>
+
+
+<div class="container">
+
+	<div>
+
+		<p>
+
+
+			Do you feel more active during the week?<br />
+
+			<b>Mean Answer : @ViewBag.MeanList[0]</b> <br />
+
+			<div>
+				@for (int i = 0; i < @ViewBag.MeanList[0]; i++)
+				{
+					<span class="fa fa-star checked"></span>
+				}
+
+				@for (int i = 0; i < 5 - @ViewBag.MeanList[0]; i++)
+				{
+					<span class="fa fa-star"></span>
+				}
+			</div>
+		</p>
+
+	</div>
+
+	<div>
+
+		<p>
+			Do you use Training groups? <br />
+
+			<b>Mean Answer :@ViewBag.MeanList[1]</b> <br />
+			<div>
+				@for (int i = 0; i < @ViewBag.MeanList[1]; i++)
+				{
+					<span class="fa fa-star checked"></span>
+				}
+
+				@for (int i = 0; i < 5 - @ViewBag.MeanList[1]; i++)
+				{
+					<span class="fa fa-star"></span>
+				}
+			</div>
+		</p>
+
+	</div>
+
+	<div>
+		<p>
+			Do you feel your performance has improved?<br />
+
+			<b>Mean Answer :@ViewBag.MeanList[2]</b><br />
+			<div>
+				@for (int i = 0; i < @ViewBag.MeanList[2]; i++)
+				{
+					<span class="fa fa-star checked"></span>
+				}
+
+				@for (int i = 0; i < 5 - @ViewBag.MeanList[2]; i++)
+				{
+					<span class="fa fa-star"></span>
+				}
+			</div>
+
+
+		</p>
+
+
+	</div>
+
+	<div>
+		<p>
+			Have you experimented with new sports?<br />
+
+
+			<b>Mean Answer :@ViewBag.MeanList[3]</b><br />
+			<div>
+				@for (int i = 0; i < @ViewBag.MeanList[3]; i++)
+				{
+					<span class="fa fa-star checked"></span>
+				}
+
+				@for (int i = 0; i < 5 - @ViewBag.MeanList[3]; i++)
+				{
+					<span class="fa fa-star"></span>
+				}
+			</div>
+
+		</p>
+
+	</div>
+
+	<div>
+		<p>
+			Has your motivation for activity increased?<br />
+
+			<b>Mean Answer :@ViewBag.MeanList[4]</b><br />
+			<div>
+				@for (int i = 0; i < @ViewBag.MeanList[4]; i++)
+				{
+					<span class="fa fa-star checked"></span>
+				}
+
+				@for (int i = 0; i < 5 - @ViewBag.MeanList[4]; i++)
+				{
+					<span class="fa fa-star"></span>
+				}
+			</div>
+
+		</p>
+
+	</div>
+
+	<div>
+		<p>
+			Do you like the app?<br />
+
+			<b>Mean Answer :@ViewBag.MeanList[5]</b><br />
+			<div>
+				@for (int i = 0; i < @ViewBag.MeanList[5]; i++)
+				{
+					<span class="fa fa-star checked"></span>
+				}
+
+				@for (int i = 0; i < 5 - @ViewBag.MeanList[5]; i++)
+				{
+					<span class="fa fa-star"></span>
+				}
+			</div>
+
+		</p>
+
+
+	</div>
+
+	<div>
+
+		<p>
+			Would you recommend friends to use the app<br />
+
+			<b>Mean Answer :@ViewBag.MeanList[6]</b><br />
+			<div>
+				@for (int i = 0; i < @ViewBag.MeanList[6]; i++)
+				{
+					<span class="fa fa-star checked"></span>
+				}
+
+				@for (int i = 0; i < 5 - @ViewBag.MeanList[6]; i++)
+				{
+					<span class="fa fa-star"></span>
+				}
+			</div>
+		</p>
+
+	</div>
+
+
+
+
+
+
+</div>
+
